@@ -145,10 +145,10 @@ const CreateUser = () => {
                 label="Contact Number"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.contact}
-                name="contact"
-                error={!!touched.contact && !!errors.contact}
-                helperText={touched.contact && errors.contact}
+                value={values.phoneNumber}
+                name="phoneNumber"
+                error={!!touched.phoneNumber && !!errors.phoneNumber}
+                helperText={touched.phoneNumber && errors.phoneNumber}
                 sx={{ gridColumn: "span 6" }}
               />
               <TextField
@@ -258,7 +258,7 @@ const checkoutSchema = yup.object().shape({
   email: yup.string().email("invalid email").required("required"),
   personalEmail: yup.string().email("invalid email").required("required"),
   password: yup.string().required("required"),
-  contact: yup.string().matches(phoneRegExp, "Phone number is not valid").required("required"),
+  phoneNumber: yup.string().matches(phoneRegExp, "Phone number is not valid").required("required"),
   address1: yup.string().required("required"),
   address2: yup.string().required("required"),
   officeId: yup.string().required("required"),
@@ -274,7 +274,7 @@ const initialValues = {
   email: "",
   personalEmail: "",
   password: "",
-  contact: "",
+  phoneNumber: "",
   address1: "",
   address2: "",
   officeId: "",

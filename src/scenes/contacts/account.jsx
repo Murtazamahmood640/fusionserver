@@ -289,7 +289,7 @@ const Dashboard = () => {
                   formData.experience.map((exp, index) => (
                     <Box key={index} className="profile-info">
                       <BusinessIcon color={isDarkTheme ? "secondary" : "primary"} />
-                      <Typography variant="body1" ml={2}>{exp.role} at {exp.company} ({exp.years})</Typography>
+                      <Typography variant="body1" ml={2}>{exp.jobTitle} at {exp.company} ({exp.years})</Typography>
                       <IconButton
                         color={isDarkTheme ? "secondary" : "primary"}
                         onClick={() => handleDialogOpen(exp, "experience")}
@@ -354,7 +354,7 @@ const Dashboard = () => {
           {editType === "education" || editType === "experience" ? (
             <>
               <TextField
-                label="Institution/Company"
+                label="Company / Institution"
                 name="institution"
                 fullWidth
                 margin="dense"
@@ -362,15 +362,15 @@ const Dashboard = () => {
                 onChange={handleFormChange}
               />
               <TextField
-                label="Degree/Role"
+                label="Role / Degree"
                 name="degree"
                 fullWidth
                 margin="dense"
-                value={selectedItem?.degree || selectedItem?.role || ""}
+                value={selectedItem?.degree || selectedItem?.jobTitle || ""}
                 onChange={handleFormChange}
               />
               <TextField
-                label="Year/Years"
+                label="Years"
                 name="year"
                 fullWidth
                 margin="dense"
