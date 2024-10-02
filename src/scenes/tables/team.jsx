@@ -73,7 +73,7 @@ const Team = ({ setEmployeeCount }) => {
       ),
     },
     { field: 'personalEmail', headerName: 'Email', flex: 1,minWidth: 150  },
-    { field: 'contact', headerName: 'Contact No.', flex: 1,minWidth: 150  }, // Ensure this field exists in backend
+    { field: 'phoneNumber', headerName: 'Contact No.', flex: 1,minWidth: 150  }, // Ensure this field exists in backend
   ];
 
   return (

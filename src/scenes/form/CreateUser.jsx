@@ -35,13 +35,12 @@ const CreateUser = () => {
       console.log('Response:', response.data); // Log API response for debugging
       alert('User created successfully');
 
-      await axios.get('https://hrserver1-8yj51ajr.b4a.run/api/createUser/mail', {
-        params: {
-          personalEmail: values.personalEmail,
-          email: values.email,
-          password: values.password,
-        }
+      await axios.post('https://hrserver1-8yj51ajr.b4a.run/api/createUser/mail', {
+        personalEmail: values.personalEmail,
+        email: values.email,
+        password: values.password,
       }).then(() => alert("Email sent!"));
+      
     } catch (error) {
       console.error('Error creating user:', error.response ? error.response.data : error.message);
       alert('Error creating user');
@@ -258,11 +257,11 @@ const checkoutSchema = yup.object().shape({
   email: yup.string().email("invalid email").required("required"),
   personalEmail: yup.string().email("invalid email").required("required"),
   password: yup.string().required("required"),
-  phoneNumber: yup.string().matches(phoneRegExp, "Phone number is not valid").required("required"),
-  address1: yup.string().required("required"),
-  address2: yup.string().required("required"),
+  phoneNumber: yup.string().required("required"),
+  address1: yup.string(),
+  address2: yup.string(),
   officeId: yup.string().required("required"),
-  linkedinId: yup.string().required("required"),
+  linkedinId: yup.string(),
   city: yup.string().required("required"),
   status: yup.string().required("required"),
   reportTo: yup.string(),
