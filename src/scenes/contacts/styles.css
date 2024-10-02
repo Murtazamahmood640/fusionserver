@@ -1,0 +1,70 @@
+.dashboard-container {
+  font-family: 'Roboto', sans-serif;
+}
+
+.profile-banner {
+  position: relative;
+  background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);  /* Overlay effect */
+  z-index: 1;
+}
+
+.banner-content {
+  position: relative;
+  z-index: 2;
+}
+
+.profile-avatar {
+  border: 4px solid white;
+  margin-top: -60px;
+}
+
+.welcome-text {
+  margin-top: 20px;
+}
+
+.profile-card {
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(1, 2, 60, 0.1);
+}
+
+.dark-mode {
+  background-color: #200655;
+  color: white;
+}
+
+.same-height {
+  height: 100%;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.task-card {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #F4F6F8;
+}
+
+.no-task-text {
+  font-style: italic;
+  color: #999;
+}

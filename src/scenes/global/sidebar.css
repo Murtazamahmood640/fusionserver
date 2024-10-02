@@ -1,0 +1,157 @@
+/* Sidebar container */
+.sidebar-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar wrapper */
+.sidebar-wrapper {
+    background-color: var(--primary-color);
+    display: block;
+    flex-direction: column;
+    overflow-y: auto;
+    height: 100vh;
+    position: fixed;
+    z-index: 1200;
+    transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+/* Sidebar in mobile mode */
+.sidebar-wrapper.mobile {
+    display: none;
+}
+
+/* Collapsed state */
+.sidebar-collapsed {
+    width: 80px !important;
+    transform: translateX(-100%); /* Slide out the sidebar when collapsed */
+}
+
+/* Expanded state */
+.sidebar-expanded {
+    width: 300px;
+    transform: translateX(0); /* Bring the sidebar back when expanded */
+}
+
+/* Mobile mode expanded */
+.sidebar-expanded-mobile {
+    width: 250px;
+    transform: translateX(0); /* Ensure smooth slide-in for mobile */
+}
+
+/* Inner item styles */
+.pro-sidebar-inner {
+    background-color: var(--primary-color);
+}
+
+.pro-icon-wrapper {
+    background-color: transparent !important;
+}
+
+.pro-inner-item {
+    padding: 5px 20px 5px 0 !important;
+    color: var(--text-color); /* Text color based on theme */
+}
+
+.pro-inner-item:hover {
+    color: var(--hover-color) !important; /* Hover effect */
+}
+
+.pro-menu-item.active {
+    color: var(--active-color) !important; /* Active state */
+}
+
+/* For Menu Icon */
+.menu-icon {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1300;
+    color: var(--text-color);
+}
+
+/* Hide menu icon when sidebar is open in mobile */
+.menu-icon.hidden {
+    display: none;
+}
+
+/* User avatar section */
+.user-info {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.user-avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-name {
+    margin: 10px 0 0 0;
+    color: var(--text-color);
+}
+
+.user-designation {
+    color: var(--green-accent);
+}
+
+/* Item padding when sidebar is expanded */
+.item-padding {
+    padding-left: 10%;
+}
+
+/* Sidebar hidden by default in mobile */
+.sidebar-hidden {
+    transform: translateX(-100%);
+    display: none;
+}
+
+/* Sidebar visible when the state changes */
+.sidebar-visible {
+    display: flex; /* Or whatever display you prefer */
+    flex-direction: column;
+    overflow-y: auto;
+    height: 100vh;
+    width: 250px;
+    transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+/* For smooth transition when sidebar opens */
+.sidebar-open {
+    transform: translateX(0);
+    display: flex;
+    transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+/* For smooth transition when sidebar closes */
+.sidebar-closed {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    /* Ensure the transition works on mobile devices */
+    .sidebar-visible {
+        position: fixed;
+        z-index: 1200;
+        width: 80%;
+        height: 100%;
+    }
+
+    .sidebar-hidden {
+        transform: translateX(-100%);
+    }
+
+    .sidebar-visible {
+        transform: translateX(0);
+    }
+
+    .sidebar-open {
+        transform: translateX(0);
+    }
+
+    .sidebar-closed {
+        transform: translateX(-100%);
+    }
+}
