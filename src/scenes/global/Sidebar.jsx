@@ -25,6 +25,7 @@ import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
 import GroupIcon from "@mui/icons-material/Group";
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
+import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import AddTaskIcon from "@mui/icons-material/AddTask";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import TaskIcon from "@mui/icons-material/Task";
@@ -168,8 +169,7 @@ const Sidebar = () => {
                     ml="15px"
                   >
                     <Typography variant="h3" color={textColor}>
-                      ABIDI PRO
-                    </Typography>
+Fusion HR                    </Typography>
                     <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                       <MenuOutlinedIcon />
                     </IconButton>
@@ -353,6 +353,14 @@ const Sidebar = () => {
                       setSelected={setSelected}
                       handleMenuItemClick={handleMenuItemClick}
                     />
+                    <Item
+                      title="FAQs"
+                      to="/faq"
+                      icon={<QuestionAnswerIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
                     {/* <Item
                       title="Chat Support"
                       to="/others/chatsupport"
@@ -463,6 +471,14 @@ const Sidebar = () => {
                       title="Add Feedback"
                       to="/others/addfeedback"
                       icon={<FeedbackIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                     <Item
+                      title="FAQs"
+                      to="/faq"
+                      icon={<QuestionAnswerIcon />}
                       selected={selected}
                       setSelected={setSelected}
                       handleMenuItemClick={handleMenuItemClick}
@@ -749,6 +765,14 @@ const Sidebar = () => {
                       open={openDropdown === "others"}
                       onOpenChange={() => handleDropdownClick("others")}
                     >
+                       <Item
+                      title="FAQs"
+                      to="/faq"
+                      icon={<QuestionAnswerIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
                       <Item
                         title="Add Feedback"
                         to="/others/addfeedback"
@@ -943,6 +967,14 @@ const Sidebar = () => {
                       title="Add Feedback"
                       to="/others/addfeedback"
                       icon={<FeedbackIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                     <Item
+                      title="FAQs"
+                      to="/faq"
+                      icon={<QuestionAnswerIcon />}
                       selected={selected}
                       setSelected={setSelected}
                       handleMenuItemClick={handleMenuItemClick}
@@ -1555,6 +1587,14 @@ const Sidebar = () => {
                       title="Add Feedback"
                       to="/others/addfeedback"
                       icon={<FeedbackIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                     <Item
+                      title="FAQs"
+                      to="/faq"
+                      icon={<QuestionAnswerIcon />}
                       selected={selected}
                       setSelected={setSelected}
                       handleMenuItemClick={handleMenuItemClick}

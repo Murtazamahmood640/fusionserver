@@ -5,6 +5,7 @@ const ProtectedRoute = ({ Component }) => {
     const rolesPermissions = {
         HRManager: [
             '/dashboard',
+            '/faq',
             "/employee/createuser",
             "/employee/team",
             "/employee/manageprofile",
@@ -23,6 +24,7 @@ const ProtectedRoute = ({ Component }) => {
         ],
         Admin: [
             "/dashboard",
+            '/faq',
             "/payroll/employeeworkinghours",
             "/stakeholdermanagement/addStakeholder",
             "/stakeholdermanagement/manageStakeholder",
@@ -96,6 +98,7 @@ const ProtectedRoute = ({ Component }) => {
         ],
         Employee: [
             '/dashboard',
+            '/faq',
             '/employee/manageprofile',
             '/time/calendar',
             '/time/clock',
@@ -109,7 +112,7 @@ const ProtectedRoute = ({ Component }) => {
         ],
         FinanceManager: [
             '/dashboard',
-            '/dashboard',
+            '/faq',
             '/employee/manageprofile',
             '/time/calendar',
             '/time/clock',
@@ -141,6 +144,7 @@ const ProtectedRoute = ({ Component }) => {
         ],
         SalesManager: [
             '/dashboard',
+            '/faq',
             '/employee/manageprofile',
             '/time/calendar',
             '/time/clock',
@@ -172,6 +176,7 @@ const ProtectedRoute = ({ Component }) => {
         ],
         ProjectManager: [
             '/dashboard',
+            '/faq',
             '/employee/manageprofile',
             '/time/calendar',
             '/time/clock',

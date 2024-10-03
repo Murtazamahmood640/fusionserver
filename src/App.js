@@ -18,7 +18,7 @@ import Doc from "./scenes/form/UploadDocument";
 import Line from "./scenes/line";
 import Pie from "./scenes/pie";
 import PieChart from "./components/PieChart";
-import FAQ from "./scenes/faq";
+import FAQ from "./scenes/faq/index";
 import Login from "./scenes/Login/login";
 import Geography from "./scenes/geography";
 import SubmitFeedbacks from "./scenes/tables/SubmitFeebacks";

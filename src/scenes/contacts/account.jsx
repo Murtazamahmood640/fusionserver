@@ -90,31 +90,40 @@ const Dashboard = () => {
     let updatedData = { ...formData };
 
     if (editType === "education") {
-      if (isNewRecord) {
-        updatedData.education.push(selectedItem);
-      } else {
-        const index = formData.education.findIndex(
-          (edu) => edu.institution === selectedItem.institution
-        );
-        updatedData.education[index] = selectedItem;
-      }
+        if (isNewRecord) {
+            updatedData.education.push(selectedItem);
+        } else {
+            const index = updatedData.education.findIndex(
+                (edu) => edu.institution === selectedItem.institution
+            );
+            updatedData.education[index] = selectedItem;
+        }
     } else if (editType === "experience") {
-      if (isNewRecord) {
-        updatedData.experience.push(selectedItem);
-      } else {
-        const index = formData.experience.findIndex(
-          (exp) => exp.company === selectedItem.company
-        );
-        updatedData.experience[index] = selectedItem;
-      }
+        if (isNewRecord) {
+            updatedData.experience.push(selectedItem);
+        } else {
+            const index = updatedData.experience.findIndex(
+                (exp) => exp.company === selectedItem.company
+            );
+            updatedData.experience[index] = selectedItem;
+        }
     } else if (editType === "personal") {
-      updatedData = { ...updatedData, ...selectedItem };
+        updatedData = { ...updatedData, ...selectedItem };
+    } else if (editType === "social") {
+        // Update social links
+        updatedData = {
+            ...updatedData,
+            linkedinId: selectedItem.linkedinId,
+            twitter: selectedItem.twitter,
+            facebook: selectedItem.facebook,
+        };
     }
 
     // Send the updated profile data to the server
     updateProfileData(updatedData);
     setOpenDialog(false);
-  };
+};
+
 
   const updateProfileData = (updatedData) => {
     const userId = localStorage.getItem("userId");
@@ -156,9 +165,22 @@ const Dashboard = () => {
       : nameParts[0][0];
     return initials.toUpperCase();
   };
+// Utility function to format the birthday
+const formatDate = (dateString) => {
+  // Check if the dateString is valid before creating a Date object
+  if (!dateString) return "Date not available";
+
+  const date = new Date(dateString);
+  
+  // If the date is invalid, return a default message
+  if (isNaN(date)) return "Invalid Date";
+
+  return date.toISOString().split('T')[0]; // Returns format as YYYY-MM-DD
+};
 
   return (
     <Box className="dashboard-container">
+      <ToastContainer />
       {/* Banner Section */}
       <Box className="profile-banner">
         <Box className="overlay"></Box> {/* Overlay for the banner */}
@@ -207,7 +229,7 @@ const Dashboard = () => {
                 </Box>
                 <Box className="profile-info">
                   <CakeIcon color={isDarkTheme ? "secondary" : "primary"} />
-                  <Typography variant="body1" ml={2}>Birthday: {formData.birthday}</Typography>
+                  <Typography variant="body1">Birthday: {formatDate(formData.birthday)}</Typography> {/* Display formatted birthday */}
                 </Box>
                 <IconButton
                   color={isDarkTheme ? "secondary" : "primary"}
@@ -259,7 +281,7 @@ const Dashboard = () => {
                     </Box>
                   ))
                 ) : (
-                  <Typography>No education details available.</Typography>
+                  <Typography variant="body1" ml={2}>No education records available.</Typography>
                 )}
               </CardContent>
             </Card>
@@ -289,7 +311,7 @@ const Dashboard = () => {
                   formData.experience.map((exp, index) => (
                     <Box key={index} className="profile-info">
                       <BusinessIcon color={isDarkTheme ? "secondary" : "primary"} />
-                      <Typography variant="body1" ml={2}>{exp.jobTitle} at {exp.company} ({exp.years})</Typography>
+                      <Typography variant="body1" ml={2}>{exp.role} at {exp.company}, {exp.duration}</Typography>
                       <IconButton
                         color={isDarkTheme ? "secondary" : "primary"}
                         onClick={() => handleDialogOpen(exp, "experience")}
@@ -305,14 +327,14 @@ const Dashboard = () => {
                     </Box>
                   ))
                 ) : (
-                  <Typography>No experience details available.</Typography>
+                  <Typography variant="body1" ml={2}>No experience records available.</Typography>
                 )}
               </CardContent>
             </Card>
           </Grid>
 
-          {/* Social Links Card */}
-          <Grid item xs={12} md={6}>
+         {/* Social Links Card with Edit Functionality */}
+         <Grid item xs={12} md={6}>
             <Card
               className={`profile-card same-height ${isDarkTheme ? "dark-mode" : ""}`}
               elevation={3}
@@ -322,108 +344,156 @@ const Dashboard = () => {
               }}
             >
               <CardContent>
-                <Typography variant="h5" mb={2}>Social Links</Typography>
+                <Box display="flex" justifyContent="space-between" alignItems="center">
+                  <Typography variant="h5" mb={2}>Social Links</Typography>
+                  <IconButton
+                    color={isDarkTheme ? "secondary" : "primary"}
+                    onClick={() => handleDialogOpen(formData, "social")}
+                  >
+                    <EditIcon />
+                  </IconButton>
+                </Box>
                 <Box className="profile-info">
                   <LinkedInIcon color={isDarkTheme ? "secondary" : "primary"} />
-                  <Typography variant="body1" ml={2}>LinkedIn: {formData.linkedinId}</Typography>
+                  <Typography variant="body1" ml={2}>LinkedIn: {formData.linkedinId || "Not provided"}</Typography>
                 </Box>
                 <Box className="profile-info">
                   <TwitterIcon color={isDarkTheme ? "secondary" : "primary"} />
-                  <Typography variant="body1" ml={2}>Twitter: {formData.twitter}</Typography>
+                  <Typography variant="body1" ml={2}>Twitter: {formData.twitter || "Not provided"}</Typography>
                 </Box>
                 <Box className="profile-info">
                   <FacebookIcon color={isDarkTheme ? "secondary" : "primary"} />
-                  <Typography variant="body1" ml={2}>Facebook: {formData.facebook}</Typography>
+                  <Typography variant="body1" ml={2}>Facebook: {formData.facebook || "Not provided"}</Typography>
                 </Box>
-                <IconButton
-                  color={isDarkTheme ? "secondary" : "primary"}
-                  onClick={() => handleDialogOpen(formData, "personal")}
-                >
-                  <EditIcon />
-                </IconButton>
               </CardContent>
             </Card>
           </Grid>
+
         </Grid>
       </Box>
 
-      {/* Edit/Add Dialog */}
+      {/* Dialog for editing or adding new records */}
       <Dialog open={openDialog} onClose={handleDialogClose}>
-        <DialogTitle>{isNewRecord ? `Add New ${editType.charAt(0).toUpperCase() + editType.slice(1)}` : `Edit ${editType.charAt(0).toUpperCase() + editType.slice(1)}`}</DialogTitle>
+        <DialogTitle>{isNewRecord ? "Add New" : "Edit"} {editType.charAt(0).toUpperCase() + editType.slice(1)}</DialogTitle>
         <DialogContent>
-          {editType === "education" || editType === "experience" ? (
+          {editType === "education" && (
             <>
               <TextField
-                label="Company / Institution"
+                margin="dense"
+                label="Institution"
                 name="institution"
-                fullWidth
-                margin="dense"
-                value={selectedItem?.institution || selectedItem?.company || ""}
+                value={selectedItem?.institution || ""}
                 onChange={handleFormChange}
+                fullWidth
               />
               <TextField
-                label="Role / Degree"
+                margin="dense"
+                label="Degree"
                 name="degree"
-                fullWidth
-                margin="dense"
-                value={selectedItem?.degree || selectedItem?.jobTitle || ""}
+                value={selectedItem?.degree || ""}
                 onChange={handleFormChange}
+                fullWidth
               />
               <TextField
-                label="Years"
-                name="year"
-                fullWidth
                 margin="dense"
-                value={selectedItem?.year || selectedItem?.years || ""}
+                label="Year"
+                name="year"
+                value={selectedItem?.year || ""}
                 onChange={handleFormChange}
+                fullWidth
               />
             </>
-          ) : (
+          )}
+          {editType === "experience" && (
             <>
               <TextField
+                margin="dense"
+                label="Company"
+                name="company"
+                value={selectedItem?.company || ""}
+                onChange={handleFormChange}
+                fullWidth
+              />
+              <TextField
+                margin="dense"
+                label="Role"
+                name="role"
+                value={selectedItem?.role || ""}
+                onChange={handleFormChange}
+                fullWidth
+              />
+              <TextField
+                margin="dense"
+                label="Duration"
+                name="duration"
+                value={selectedItem?.duration || ""}
+                onChange={handleFormChange}
+                fullWidth
+              />
+            </>
+          )}
+          {editType === "personal" && (
+            <>
+              <TextField
+                margin="dense"
                 label="Name"
                 name="name"
-                fullWidth
-                margin="dense"
                 value={selectedItem?.name || ""}
                 onChange={handleFormChange}
-              />
-              <TextField
-                label="Email"
-                name="email"
                 fullWidth
-                margin="dense"
-                value={selectedItem?.email || ""}
-                onChange={handleFormChange}
               />
               <TextField
+                margin="dense"
                 label="Phone Number"
                 name="phoneNumber"
-                fullWidth
-                margin="dense"
                 value={selectedItem?.phoneNumber || ""}
                 onChange={handleFormChange}
+                fullWidth
               />
               <TextField
+                margin="dense"
                 label="Birthday"
                 name="birthday"
-                type="date"
-                fullWidth
-                margin="dense"
                 value={selectedItem?.birthday || ""}
                 onChange={handleFormChange}
+                fullWidth
+              />
+            </>
+          )}
+            {editType === "social" && (
+            <>
+              <TextField
+                margin="dense"
+                label="LinkedIn"
+                name="linkedinId"
+                value={selectedItem?.linkedinId || ""}
+                onChange={handleFormChange}
+                fullWidth
+              />
+              <TextField
+                margin="dense"
+                label="Twitter"
+                name="twitter"
+                value={selectedItem?.twitter || ""}
+                onChange={handleFormChange}
+                fullWidth
+              />
+              <TextField
+                margin="dense"
+                label="Facebook"
+                name="facebook"
+                value={selectedItem?.facebook || ""}
+                onChange={handleFormChange}
+                fullWidth
               />
             </>
           )}
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleDialogClose}>Cancel</Button>
+          <Button onClick={handleDialogClose} color="primary">Cancel</Button>
           <Button onClick={handleUpdate} color="primary">Save</Button>
         </DialogActions>
       </Dialog>
-
-      {/* Toast Notification */}
-      <ToastContainer />
     </Box>
   );
 };
