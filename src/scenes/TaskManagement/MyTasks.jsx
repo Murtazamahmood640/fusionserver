@@ -74,7 +74,7 @@ const MyTasks = () => {
       renderCell: (params) => (
         <Button
           variant="contained"
-          color="primary"
+          color="secondary"
           onClick={() => handleStatusChange(params.row._id)}
           disabled={params.row.taskStatus === 'Complete'}
           sx={{ fontSize: isMobile ? '10px' : '12px' }} // Adjust font size for mobile
@@ -86,7 +86,7 @@ const MyTasks = () => {
   ];
 
   return (
-    <Box m="20px">
+    <Box m="20px" sx={{ pb: "40px" }}>
       <Header title="My Tasks" subtitle="Tasks assigned to you" />
       <Box
         height="75vh"

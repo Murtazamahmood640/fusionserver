@@ -31,29 +31,33 @@ const Deductions = () => {
             field: "payee", 
             headerName: "Payee Name", 
             flex: 1,
+            minWidth: 150, // Ensure enough width for the payee name column
             valueGetter: (params) => params.row.payee ? params.row.payee.name : "Unknown" // Handling null payee
         },
         { 
             field: "deductions", 
             headerName: "Deductions", 
-            flex: 1 
+            flex: 1,
+            minWidth: 100,  // Ensure enough width for deductions column
         },
         { 
             field: "totalAmount", 
             headerName: "Total Amount", 
             flex: 1,
+            minWidth: 120,  // Ensure enough width for total amount column
             valueGetter: (params) => params.row.paymentAmount - (params.row.deductions || 0)
         },
         { 
             field: "paymentDate", 
             headerName: "Payment Date", 
             flex: 1,
+            minWidth: 150,  // Ensure enough width for payment date column
             valueGetter: (params) => new Date(params.row.paymentDate).toLocaleDateString() 
         }
     ];
-
+    
     return (
-        <Box m="20px">
+        <Box m="20px" sx={{ pb: "40px" }}>
             <Header title="DEDUCTIONS" subtitle="View Deductions by Payee" />
             <Box
                 height="75vh"
@@ -85,6 +89,8 @@ const Deductions = () => {
                     '& .MuiCheckbox-root': {
                         color: `${colors.blueAccent[200]} !important`,
                     },
+                    // Add horizontal scrolling
+                    overflowX: 'auto',
                 }}
             >
                 <DataGrid
@@ -94,12 +100,14 @@ const Deductions = () => {
                     pageSize={10}
                     pageSizeOptions={[10, 20, 50]}
                     checkboxSelection // Enables checkboxes on the left
+                    autoHeight={false} // Ensure the height is constrained
                 />
             </Box>
-
+    
             <ToastContainer />
         </Box>
     );
+    
 };
 
 export default Deductions;

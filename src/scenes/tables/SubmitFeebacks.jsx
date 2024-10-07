@@ -57,7 +57,7 @@ const SubmitFeedbacks = () => {
   ];
 
   return (
-    <Box m="20px">
+    <Box m="20px" sx={{ pb: "40px" }}>
       <Header title="SUBMITTED FEEDBACK" subtitle =" Submitted Feedbacks" />
             <Box
               m="40px 0 0 0"

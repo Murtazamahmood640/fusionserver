@@ -98,7 +98,7 @@ const Calendar = () => {
   
 
   return (
-    <Box m="20px">
+    <Box m="20px" sx={{ pb: "40px" }}>
       <Header title="Calendar" subtitle="Full Calendar Interactive Page" />
       <Typography variant="h5">Total Monthly Hours: {totalMonthlyHours}</Typography>
       <Box display="flex" justifyContent="space-between">

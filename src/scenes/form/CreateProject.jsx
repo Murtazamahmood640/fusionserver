@@ -75,7 +75,7 @@ const CreateProject = () => {
   };
 
   return (
-    <Box m="20px">
+    <Box m="20px" sx={{ pb: "40px" }}>
       <Header title="CREATE PROJECT" subtitle="Add or Edit Project" />
       <Formik
         initialValues={{
@@ -211,7 +211,7 @@ const CreateProject = () => {
               />
             </Box>
             <Box display="flex" justifyContent="flex-end" mt="20px">
-              <Button type="submit" color="primary" variant="contained">
+              <Button type="submit" color="secondary" variant="contained">
                 {values._id ? "Save Changes" : "Add Project"}
               </Button>
             </Box>

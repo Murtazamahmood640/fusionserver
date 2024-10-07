@@ -42,7 +42,7 @@ const AllDoc = () => {
 
   return (
    
-        <Box className="main-content" flexGrow={1} p={2} style={{ fontFamily: 'Poppins' }}>
+        <Box className="main-content" flexGrow={1} p={2} style={{ fontFamily: 'Poppins' }} sx={{ pb: "40px" }}>
               <Header title="View Documents" subtitle="All documents" />
 
           <Box

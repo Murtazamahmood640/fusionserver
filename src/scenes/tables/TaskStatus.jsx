@@ -114,7 +114,7 @@ const TaskStatus = () => {
   ];
 
   return (
-    <Box m="20px">
+    <Box m="20px" sx={{ pb: "40px" }}>
       <Header title="TASK STATUS" subtitle="Manage Your Tasks" />
       <Box
         m="40px 0 0 0"

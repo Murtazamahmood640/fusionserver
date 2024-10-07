@@ -128,7 +128,7 @@ const MilestonesList = () => {
         <Box>
           <Button
             variant="contained"
-            color="primary"
+            color="secondary"
             onClick={() => handleEdit(params.row)}
             sx={{ marginRight: 1, fontSize: isMobile ? '10px' : '12px' }}
           >
@@ -148,7 +148,7 @@ const MilestonesList = () => {
   ];
 
   return (
-    <Box m="20px">
+    <Box m="20px" sx={{ pb: "40px" }}>
       <Header title="View Milestones" subtitle="Manage list of all milestones" />
 
       <Box
@@ -244,7 +244,7 @@ const MilestonesList = () => {
           <Button onClick={handleCloseDialog} color="secondary">
             Cancel
           </Button>
-          <Button onClick={handleFormSubmit} color="primary">
+          <Button onClick={handleFormSubmit} color="secondary">
             Save
           </Button>
         </DialogActions>

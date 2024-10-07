@@ -7,7 +7,7 @@ const Geography = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   return (
-    <Box m="20px">
+    <Box m="20px" sx={{ pb: "40px" }}>
       <Header title="Geography" subtitle="Simple Geography Chart" />
 
       <Box

@@ -129,7 +129,7 @@ const BillList = () => {
             minWidth: 180,
             renderCell: (params) => (
                 <Box display="flex" gap={1}>
-                    <Button variant="contained" color="primary" onClick={() => handleEditClick(params.row)}>Edit</Button>
+                    <Button variant="contained" color="secondary" onClick={() => handleEditClick(params.row)}>Edit</Button>
                     <Button variant="contained" color="secondary" onClick={() => handleDeleteClick(params.row._id)}>Delete</Button>
                 </Box>
             ),
@@ -137,7 +137,7 @@ const BillList = () => {
     ];
 
     return (
-        <Box m="20px">
+        <Box m="20px" sx={{ pb: "40px" }}>
             <Header title="BILL LIST" subtitle="Manage Bills" />
             <Box
                 height="75vh"
@@ -248,7 +248,7 @@ const BillList = () => {
                     <Button onClick={handleCloseDialog} color="secondary">
                         Cancel
                     </Button>
-                    <Button onClick={handleFormSubmit} color="primary">
+                    <Button onClick={handleFormSubmit} color="secondary">
                         {editingBill ? 'Save Changes' : 'Submit'}
                     </Button>
                 </DialogActions>

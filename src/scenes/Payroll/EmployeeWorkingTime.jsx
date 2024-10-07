@@ -106,7 +106,7 @@ const TimeEntryPage = () => {
   };
 
   return (
-    <Box sx={{ padding: 3 }}>
+    <Box sx={{ pb: "40px" }}>
       <Header title="Time Entries" subtitle="View and Filter Employee Time Entries" />
 
       <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', p: 3 }}>
@@ -159,7 +159,7 @@ const TimeEntryPage = () => {
 
           <Button
             variant="contained"
-            color="primary"
+            color="secondary"
             onClick={fetchTimeEntries}
             fullWidth
             sx={{ mt: 3, py: 1.5 }}

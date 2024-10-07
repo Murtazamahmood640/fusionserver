@@ -137,22 +137,34 @@ const ListofInvoices = () => {
     {
       field: "actions",
       headerName: "Actions",
-      flex: 1,
+      flex: 1, // Increase flex to allow more space for buttons
+      minWidth: 200, // Set minimum width for actions column
       renderCell: (params) => (
-        <Box display="flex" gap={2}>
-          <Button variant="contained" color="primary" onClick={() => handleViewPDF(params.row)}>
+        <Box display="flex" gap={1} justifyContent="center" alignItems="center" width="100%">
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => handleViewPDF(params.row)}
+            sx={{ fontSize: '10px', padding: '6px 10px' }} // Ensure the button has proper padding and smaller font size
+          >
             Download PDF
           </Button>
-          <Button variant="contained" color="secondary" onClick={() => handleDelete(params.row._id)}>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => handleDelete(params.row._id)}
+            sx={{ fontSize: '10px', padding: '6px 10px' }} // Similar adjustments for the delete button
+          >
             Delete
           </Button>
         </Box>
       ),
     },
   ];
+  
 
   return (
-    <Box m="20px">
+    <Box m="20px" sx={{ pb: "40px" }}>
       <Header title="View Invoices" subtitle="Manage list of invoices" />
 
       <Box

@@ -189,9 +189,10 @@ const formatDate = (dateString) => {
             sx={{
               width: 120,
               height: 120,
+              pb: "40px" ,
               backgroundColor: isDarkTheme ? "grey.800" : "primary.main",
               color: isDarkTheme ? "grey.100" : "common.white",
-            }}
+            }} 
           >
             {getInitials(formData.name || "User Name")}
           </Avatar>
@@ -490,8 +491,8 @@ const formatDate = (dateString) => {
           )}
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleDialogClose} color="primary">Cancel</Button>
-          <Button onClick={handleUpdate} color="primary">Save</Button>
+          <Button onClick={handleDialogClose} color="secondary">Cancel</Button>
+          <Button onClick={handleUpdate} color="secondary">Save</Button>
         </DialogActions>
       </Dialog>
     </Box>

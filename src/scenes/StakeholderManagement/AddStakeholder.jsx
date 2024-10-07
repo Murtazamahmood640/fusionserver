@@ -44,7 +44,7 @@ const AddStakeholder = () => {
   };
 
   return (
-    <Box m="20px">
+    <Box m="20px" sx={{ pb: "40px" }}>
       <Header title="ADD STAKEHOLDER" subtitle="Add a New Stakeholder" />
       <Formik
         initialValues={initialValues}
@@ -122,7 +122,7 @@ const AddStakeholder = () => {
               <Button
                 type="submit"
                 variant="contained"
-                color="primary"
+                color="secondary"
                 sx={{ gridColumn: 'span 12' }}
                 disabled={isSubmitting}
               >

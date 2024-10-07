@@ -31,31 +31,34 @@ const Earnings = () => {
             field: "payee", 
             headerName: "Payee Name", 
             flex: 1,
+            minWidth: 150,  // Ensure enough width for the payee name column
             valueGetter: (params) => params.row.payee ? params.row.payee.name : "Unknown" // Handling null payee
         },
         { 
             field: "bonuses", 
             headerName: "Bonuses", 
             flex: 1,
+            minWidth: 100,  // Ensure enough width for bonuses column
             valueGetter: (params) => params.row.bonuses || 0 
         },
         { 
             field: "totalAmount", 
             headerName: "Total Amount", 
             flex: 1,
+            minWidth: 120,  // Ensure enough width for total amount column
             valueGetter: (params) => (params.row.paymentAmount || 0) + (params.row.bonuses || 0) 
         },
         { 
             field: "paymentDate", 
             headerName: "Payment Date", 
             flex: 1,
+            minWidth: 150,  // Ensure enough width for payment date column
             valueGetter: (params) => new Date(params.row.paymentDate).toLocaleDateString() 
         }
-    
     ];
-
+    
     return (
-        <Box m="20px">
+        <Box m="20px" sx={{ pb: "40px" }}>
             <Header title="EARNINGS" subtitle="View Earnings Records" />
             <Box
                 height="75vh"
@@ -87,6 +90,8 @@ const Earnings = () => {
                     '& .MuiCheckbox-root': {
                         color: `${colors.blueAccent[200]} !important`,
                     },
+                    // Add horizontal scrolling
+                    overflowX: 'auto',
                 }}
             >
                 <DataGrid
@@ -96,12 +101,14 @@ const Earnings = () => {
                     pageSize={10}
                     pageSizeOptions={[10, 20, 50]}
                     checkboxSelection // Enables checkboxes on the left
+                    autoHeight={false} // Ensure the height is constrained
                 />
             </Box>
-
+    
             <ToastContainer />
         </Box>
     );
 };
+    
 
 export default Earnings;

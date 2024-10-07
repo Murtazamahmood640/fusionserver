@@ -104,7 +104,7 @@ const Sidebar = () => {
   
 
   return (
-    <Box display="flex" height="100vh">
+    <Box display="flex" height="100vh" sx={{ pb: "40px" }}>
       {isMobile && (
         <IconButton
           onClick={() => setIsSidebarVisible(!isSidebarVisible)}

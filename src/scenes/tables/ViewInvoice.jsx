@@ -38,7 +38,7 @@ const View = () => {
   );
 
   return (
-    <Box>
+    <Box sx={{ pb: "40px" }}>
       <Box display="flex">
         <Box flexGrow={1} p={3}>
           <Typography variant="h4" gutterBottom>View Invoice</Typography>

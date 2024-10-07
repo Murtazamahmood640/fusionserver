@@ -39,7 +39,7 @@ const BarChart = ({ isDashboard = false }) => {
   }, []);
 
   return (
-    <div style={{ height: '100%', width: '100%' }}>
+    <div style={{ height: '100%', width: '100%' }} sx={{ pb: "40px" }}>
       <ResponsiveBar
         data={chartData}
         keys={['count']}

@@ -77,7 +77,7 @@ const Team = ({ setEmployeeCount }) => {
   ];
 
   return (
-    <Box m="20px">
+    <Box m="20px" sx={{ pb: "40px" }}>
       <Header title="TEAM" subtitle="Managing the Team Members" />
 
       <Box

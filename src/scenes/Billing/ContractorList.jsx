@@ -113,7 +113,7 @@ const ContractorList = () => {
         <Box>
           <Button
             variant="contained"
-            color="primary"
+            color="secondary"
             onClick={() => handleEdit(params.row)}
             sx={{ marginRight: 1, fontSize: isMobile ? '10px' : '12px' }}
           >
@@ -133,7 +133,7 @@ const ContractorList = () => {
   ];
 
   return (
-    <Box m="20px">
+    <Box m="20px" sx={{ pb: "40px" }}>
       <Header title="Contractor List" subtitle="Manage Contractors" />
 
       <Box
@@ -240,7 +240,7 @@ const ContractorList = () => {
           <Button onClick={handleCloseDialog} color="secondary">
             Cancel
           </Button>
-          <Button onClick={handleFormSubmit} color="primary">
+          <Button onClick={handleFormSubmit} color="secondary">
             {editingContractor ? 'Save Changes' : 'Submit'}
           </Button>
         </DialogActions>

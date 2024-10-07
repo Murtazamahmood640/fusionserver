@@ -165,7 +165,7 @@ const AddInvoice = () => {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <Box m="20px">
+      <Box m="20px" sx={{ pb: "40px" }}>
         <Header title="CREATE INVOICE" subtitle="Create a New Invoice" />
         <Box>
           <FormControl
@@ -344,7 +344,7 @@ const AddInvoice = () => {
           />
 
           <Box display="flex" justifyContent="flex-end" mt={2}>
-            <Button variant="contained" color="primary" onClick={submitInvoice}>
+            <Button variant="contained" color="secondary" onClick={submitInvoice}>
               Save Invoice
             </Button>
           </Box>

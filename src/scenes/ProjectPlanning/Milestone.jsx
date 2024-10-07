@@ -83,7 +83,7 @@ const CreateMilestone = () => {
   };
 
   return (
-    <Box m="20px">
+    <Box m="20px" sx={{ pb: "40px" }}>
       <Header
         title="Add Milestone Details"
         subtitle="Add Milestone Details of Project"
@@ -231,7 +231,7 @@ const CreateMilestone = () => {
             </Box>
 
             <Box display="flex" justifyContent="end" mt="20px">
-              <Button type="submit" color="primary" variant="contained">
+              <Button type="submit" color="secondary" variant="contained">
                 Save Milestone
               </Button>
             </Box>

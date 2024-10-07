@@ -131,7 +131,7 @@ const MyTasks = () => {
   ];
  
   return (
-    <Box m="20px">
+    <Box m="20px" sx={{ pb: "40px" }}>
       <Header title="MY TASKS" subtitle="Manage Your Tasks" />
       <Box
         m="40px 0 0 0"
@@ -221,7 +221,7 @@ const MyTasks = () => {
                   fullWidth
                 />
               </div>
-              <Button type="submit" variant="contained" color="primary">
+              <Button type="submit" variant="contained" color="secondary">
                 {editingProject ? 'Save Changes' : 'Submit'}
               </Button>
               <Button onClick={handlePopupClose} type="button" variant="contained" color="secondary">

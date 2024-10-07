@@ -103,7 +103,7 @@ const ProductList = () => {
         <Box>
           <Button
             variant="contained"
-            color="primary"
+            color="secondary"
             onClick={() => handleEdit(params.row)}
             sx={{ marginRight: 1, fontSize: isMobile ? '10px' : '12px' }}
           >
@@ -123,7 +123,7 @@ const ProductList = () => {
   ];
 
   return (
-    <Box m="20px">
+    <Box m="20px" sx={{ pb: "40px" }}>
       <Header title="Product List" subtitle="Manage your product inventory" />
       <Box
         height="75vh"
@@ -223,7 +223,7 @@ const ProductList = () => {
           <Button onClick={handleCloseDialog} color="secondary">
             Cancel
           </Button>
-          <Button onClick={handleFormSubmit} color="primary">
+          <Button onClick={handleFormSubmit} color="secondary">
             Save
           </Button>
         </DialogActions>

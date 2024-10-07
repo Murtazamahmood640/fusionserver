@@ -114,7 +114,7 @@ const TimeoffApp = () => {
   };
 
   return (
-    <Box m="20px">
+    <Box m="20px" sx={{ pb: "40px" }}>
       <Header title="TIME OFF APPROVAL" subtitle="Manage Time Off Requests" />
       <Box
         m="40px 0 0 0"
@@ -278,7 +278,7 @@ const TimeoffApp = () => {
               </Grid>
             </Grid>
             <Box display="flex" justifyContent="flex-end" mt={2}>
-              <Button type="submit" variant="contained" color="primary">
+              <Button type="submit" variant="contained" color="secondary">
                 {editingIndex !== null ? 'Save Changes' : 'Add Time Off Request'}
               </Button>
               <Button onClick={handlePopupClose} variant="outlined" color="secondary" sx={{ ml: 2 }}>

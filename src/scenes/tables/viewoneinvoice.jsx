@@ -42,12 +42,12 @@ const ViewOne = () => {
   };
 
   return (
-    <Box>
+    <Box sx={{ pb: "40px" }}>
       <Box display="flex">
         <Box flexGrow={1} p={3}>
           <Box display="flex" justifyContent="space-between" alignItems="center" mb={3}>
             <Typography variant="h4">Invoice #{invoice.invoiceNumber}</Typography>
-            <Button variant="contained" color="primary" onClick={handleDownloadInvoice}>Download Invoice</Button>
+            <Button variant="contained" color="secondary" onClick={handleDownloadInvoice}>Download Invoice</Button>
           </Box>
           <Paper id="invoice" elevation={3} sx={{ p: 3, borderRadius: 2 }}>
             <Grid container spacing={2}>

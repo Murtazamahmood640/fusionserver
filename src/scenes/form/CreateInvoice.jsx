@@ -76,7 +76,7 @@ const CreateInvoice = () => {
   };
 
   return (
-    <Box m="20px">
+    <Box m="20px" sx={{ pb: "40px" }}>
           <Header title="CREATE INVOICE" subtitle="Create a New Invoice" />
           <Formik
             onSubmit={handleFormSubmit}
@@ -289,7 +289,7 @@ const CreateInvoice = () => {
                     sx={{ gridColumn: "span 6" }}
                   />
                 </Box>
-                <Button type="submit" variant="contained" color="primary" sx={{ mt: 2 }}>
+                <Button type="submit" variant="contained" color="secondary" sx={{ mt: 2 }}>
                   Create Invoice
                 </Button>
               </form>

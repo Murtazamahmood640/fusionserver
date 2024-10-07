@@ -49,7 +49,7 @@ const AddProduct = () => {
   };
 
   return (
-    <Box m="20px">
+    <Box m="20px" sx={{ pb: "40px" }}>
       <Header title="ADD PRODUCT" subtitle="Add a New Product" />
       <Formik
         initialValues={initialValues}
@@ -137,7 +137,7 @@ const AddProduct = () => {
               <Button
                 type="submit"
                 variant="contained"
-                color="primary"
+                color="secondary"
                 sx={{ gridColumn: 'span 12' }}
               >
                 Save Product

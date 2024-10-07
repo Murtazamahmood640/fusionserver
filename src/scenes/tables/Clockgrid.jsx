@@ -8,7 +8,7 @@ const ClockGrid = ({ time, isActive, checkInTime, checkInButtonText, handleCheck
   const theme = useTheme();
 
   return (
-    <Grid item xs={12} md={4}>
+    <Grid item xs={12} md={4} sx={{ pb: "40px" }}>
       <Card sx={{ boxShadow: 3 }}>
         <CardContent sx={{ backgroundColor: theme.palette.background.paper }}>
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -22,7 +22,7 @@ const ClockGrid = ({ time, isActive, checkInTime, checkInButtonText, handleCheck
             </Typography>
             <Button
               variant="contained"
-              color={isActive ? 'secondary' : 'primary'}
+              color={isActive ? 'secondary' : 'secondary'}
               onClick={handleCheckin}
               startIcon={isActive ? <PauseIcon /> : <PlayArrowIcon />}
               sx={{ mt: 2 }}

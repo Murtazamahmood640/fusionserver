@@ -104,7 +104,7 @@ const ProjectOverview = () => {
   };
 
   return (
-    <Paper style={{ padding: isMobile ? 10 : 20, backgroundColor: theme.palette.background.paper }}>
+    <Paper style={{ padding: isMobile ? 10 : 20, backgroundColor: theme.palette.background.paper }} sx={{ pb: "40px" }}>
       <Header title="Project Overview" subtitle="Overview of your projects and tasks" />
 
       {/* Top Section: 4 Grids */}

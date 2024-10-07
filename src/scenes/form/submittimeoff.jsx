@@ -102,7 +102,7 @@ const { data } = await axios.get('https://hrserver1-8yj51ajr.b4a.run/api/timeoff
   
 
   return (
-    <Box m="20px">
+    <Box m="20px" sx={{ pb: "40px" }}>
       <Header title="TIME OFF REQUEST" subtitle="Request Time Off" />
       <Formik
         onSubmit={handleFormSubmit}
@@ -186,7 +186,7 @@ helperText={touched.to && errors.to}
               />
             </Box>
             <Box display="flex" justifyContent="flex-end" mt="20px">
-              <Button type="submit" color="primary" variant="contained">
+              <Button type="submit" color="secondary" variant="contained">
                 {editingIndex !== null ? 'Save Changes' : 'Submit Request'}
               </Button>
             </Box>

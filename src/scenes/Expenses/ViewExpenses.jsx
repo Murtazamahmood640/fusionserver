@@ -97,7 +97,7 @@ const ViewExpenses = () => {
             minWidth: 150,
             renderCell: (params) => (
                 <Box>
-                    <Button variant="contained" color="primary" onClick={() => handleEditClick(params.row)} sx={{ marginRight: 1, fontSize: isMobile ? '10px' : '12px' }}>Edit</Button>
+                    <Button variant="contained" color="secondary" onClick={() => handleEditClick(params.row)} sx={{ marginRight: 1, fontSize: isMobile ? '10px' : '12px' }}>Edit</Button>
                     <Button variant="contained" color="secondary" onClick={() => handleDeleteClick(params.row._id)} sx={{ fontSize: isMobile ? '10px' : '12px' }}>Delete</Button>
                 </Box>
             ),
@@ -105,7 +105,7 @@ const ViewExpenses = () => {
     ];
 
     return (
-        <Box m="20px">
+        <Box m="20px" sx={{ pb: "40px" }}>
             <Header title="EXPENSE LIST" subtitle="Manage Expenses" />
             <Box
                 height="75vh"
@@ -253,7 +253,7 @@ const ViewExpenses = () => {
                                 </Grid>
                             </Grid>
                             <Box mt={2}>
-                                <Button type="submit" variant="contained" color="primary">
+                                <Button type="submit" variant="contained" color="secondary">
                                     {editingExpense ? 'Save Changes' : 'Submit'}
                                 </Button>
                                 <Button onClick={handlePopupClose} variant="contained" color="secondary" sx={{ ml: 2 }}>

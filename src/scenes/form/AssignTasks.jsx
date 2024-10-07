@@ -169,12 +169,12 @@ const AssignTasks = () => {
   );
  
   return (
-    <Box p={3} bgcolor={theme.palette.background.default}>
+    <Box p={3} bgcolor={theme.palette.background.default} sx={{ pb: "40px" }}>
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
             <Typography variant="h4">Assign Tasks</Typography>
-            <Button variant="contained" color="primary" onClick={handleAddTaskClick} startIcon={<Assignment />}>
+            <Button variant="contained" color="secondary" onClick={handleAddTaskClick} startIcon={<Assignment />}>
               Assign Task
             </Button>
           </Box>
@@ -317,10 +317,10 @@ const AssignTasks = () => {
             </Grid>
           </DialogContent>
           <DialogActions>
-            <Button onClick={handlePopupClose} color="primary">
+            <Button onClick={handlePopupClose} color="secondary">
               Cancel
             </Button>
-            <Button type="submit" color="primary">
+            <Button type="submit" color="secondary">
               {editingIndex !== null ? 'Update' : 'Assign'}
             </Button>
           </DialogActions>

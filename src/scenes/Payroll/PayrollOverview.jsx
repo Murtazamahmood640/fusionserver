@@ -88,7 +88,7 @@ const PayrollDashboard = () => {
   };
 
   return (
-    <Paper style={{ padding: 20, backgroundColor: theme.palette.background.paper }}>
+    <Paper style={{ padding: 20, backgroundColor: theme.palette.background.paper }} sx={{ pb: "40px" }}>
       <Header title="Payroll Dashboard" subtitle="Overview of payroll statistics" />
 
       {/* Top Section: 4 Grids */}

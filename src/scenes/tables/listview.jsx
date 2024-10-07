@@ -3,7 +3,7 @@ import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, 
 
 const ListView = ({ invoices, navigate }) => {
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} sx={{ pb: "40px" }}>
       <Table>
         <TableHead>
           <TableRow>

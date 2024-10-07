@@ -102,21 +102,19 @@ const MileageClaimsList = () => {
     { field: 'serviceType', headerName: 'Service Type', flex: 1 },
     { field: 'contactInformation.phone', headerName: 'Phone', flex: 1, valueGetter: (params) => params.row.contactInformation?.phone || '' },
     { field: 'contactInformation.address', headerName: 'Address', flex: 1, valueGetter: (params) => params.row.contactInformation?.address || '' },
-    // { field: 'ClaimedProjectFees', headerName: 'Claimed Project Fees', flex: 1 },
     { field: 'contractStartDate', headerName: 'Contract Start Date', flex: 1, valueGetter: (params) => new Date(params.row.contractStartDate).toLocaleDateString() },
-    // { field: 'hourlyRate', headerName: 'Hourly Rate ($)', flex: 1 },
-    // { field: 'notes', headerName: 'Notes/Comments', flex: 1 },
     {
       field: 'actions',
       headerName: 'Actions',
-      flex: 1,
+      flex: 1.5, // Increase the flex for more space
+      minWidth: 250, // Ensure a minimum width to avoid cutting off the buttons
       renderCell: (params) => (
-        <Box>
+        <Box display="flex" gap={1} justifyContent="center" alignItems="center" width="100%">
           <Button
             variant="contained"
-            color="primary"
+            color="secondary"
             onClick={() => handleEdit(params.row)}
-            sx={{ marginRight: 1 }}
+            sx={{ fontSize: '10px', padding: '6px 10px' }} // Adjust the button padding and font size
           >
             Edit
           </Button>
@@ -124,6 +122,7 @@ const MileageClaimsList = () => {
             variant="contained"
             color="secondary"
             onClick={() => handleDelete(params.row._id)}
+            sx={{ fontSize: '10px', padding: '6px 10px' }} // Adjust the button padding and font size
           >
             Delete
           </Button>
@@ -131,9 +130,10 @@ const MileageClaimsList = () => {
       ),
     },
   ];
+  
 
   return (
-    <Box m="20px">
+    <Box m="20px" sx={{ pb: "40px" }}>
       <Header title="EMPLOYEE MILEAGE CLAIMS" subtitle="Manage Your Mileage Claims" />
       <Box
         m="40px 0 0 0"
@@ -276,7 +276,7 @@ const MileageClaimsList = () => {
           <Button onClick={handleCloseDialog} color="secondary">
             Cancel
           </Button>
-          <Button onClick={handleFormSubmit} color="primary">
+          <Button onClick={handleFormSubmit} color="secondary">
             Save
           </Button>
         </DialogActions>

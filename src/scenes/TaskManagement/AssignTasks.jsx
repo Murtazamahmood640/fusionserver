@@ -95,7 +95,7 @@ const AssignTasks = () => {
   };
 
   return (
-    <Box m="20px">
+    <Box m="20px" sx={{ pb: "40px" }}>
       <Header title="ASSIGN TASK" subtitle="Add a New Task" />
       <Formik
         initialValues={{
@@ -312,7 +312,7 @@ const AssignTasks = () => {
             <Button
               type="submit"
               variant="contained"
-              color="primary"
+              color="secondary"
               sx={{ marginTop: "20px" }}
             >
               Assign Task

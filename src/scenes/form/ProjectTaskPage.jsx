@@ -190,7 +190,7 @@ const ProjectTaskPage = () => {
   };
 
   return (
-    <Box className="home-page">
+    <Box className="home-page" sx={{ pb: "40px" }}>
       <Box className="content-container" display="flex">
         <Container className="main-content">
           <Typography variant="h1" align="center" style={{ textTransform: "capitalize", color: "#978d03", fontSize: "40px" }}>
@@ -277,7 +277,7 @@ const ProjectTaskPage = () => {
                 </FormControl>
               </Grid>
               <Grid item xs={12} display="flex" justifyContent="center">
-                <Button variant="contained" color="primary" type="submit">
+                <Button variant="contained" color="secondary" type="submit">
                   {editingIndex !== null ? "Save Changes" : "Assign Task"}
                 </Button>
               </Grid>

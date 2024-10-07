@@ -108,7 +108,7 @@ const ClientsList = () => {
                 <Box>
                     <Button 
                         variant="contained" 
-                        color="primary" 
+                        color="secondary" 
                         onClick={() => handleEditClick(params.row)}
                         sx={{ marginRight: 1, fontSize: isMobile ? '10px' : '12px' }} // Responsive font size
                     >
@@ -128,7 +128,7 @@ const ClientsList = () => {
     ];
 
     return (
-        <Box m="20px">
+        <Box m="20px" sx={{ pb: "40px" }}>
             <Header title="Clients List" subtitle="Manage list of clients" />
             <Box
                 height="75vh"
@@ -234,7 +234,7 @@ const ClientsList = () => {
                     <Button onClick={handleCloseDialog} color="secondary">
                         Cancel
                     </Button>
-                    <Button onClick={handleFormSubmit} color="primary">
+                    <Button onClick={handleFormSubmit} color="secondary">
                         Save
                     </Button>
                 </DialogActions>

@@ -165,7 +165,7 @@ const VendorList = () => {
                 <Box display="flex" gap={1}>
                     <Button
                         variant="contained"
-                        color="primary"
+                        color="secondary"
                         onClick={() => handleEditClick(params.row)}
                     >
                         Edit
@@ -183,7 +183,7 @@ const VendorList = () => {
     ];
 
     return (
-        <Box m="20px">
+        <Box m="20px" sx={{ pb: "40px" }}>
             <Header title="VENDOR LIST" subtitle="Manage Vendors" />
             <Box
                 m="40px 0 0 0"
@@ -414,10 +414,10 @@ const VendorList = () => {
                                     </Grid> */}
                                 </Grid>
                                 <DialogActions>
-                                    <Button onClick={handlePopupClose} color="primary">
+                                    <Button onClick={handlePopupClose} color="secondary">
                                         Cancel
                                     </Button>
-                                    <Button type="submit" color="primary">
+                                    <Button type="submit" color="secondary">
                                         {editingVendor ? 'Update Vendor' : 'Add Vendor'}
                                     </Button>
                                 </DialogActions>

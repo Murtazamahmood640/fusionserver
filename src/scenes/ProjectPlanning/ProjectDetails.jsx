@@ -32,7 +32,7 @@ const ProjectDetails = () => {
   }
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div style={{ padding: '20px' }} sx={{ pb: "40px" }}>
       <Typography variant="h4" gutterBottom>
         {project.projectName} Details
       </Typography>

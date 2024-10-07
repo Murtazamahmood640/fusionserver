@@ -31,7 +31,7 @@ const Doc = () => {
   };
 
   return (
-    <Box m="20px">
+    <Box m="20px" sx={{ pb: "40px" }}>
       <Header title="DOCUMENT INFORMATION" subtitle="Upload a new document" />
       <Formik
         initialValues={initialValues}
@@ -113,7 +113,7 @@ const Doc = () => {
                 }}
               />
               <label htmlFor="fileupload" className='custom-file-upload' style={{ gridColumn: "span 6" }}>
-                <Button variant="contained" color="primary" component="span">
+                <Button variant="contained" color="secondary" component="span">
                   Upload File
                 </Button>
               </label>
@@ -122,7 +122,7 @@ const Doc = () => {
               </Box>
             </Box>
             <Box display="flex" justifyContent="flex-end" mt="20px">
-              <Button type="submit" color="primary" variant="contained" disabled={isSubmitting}>
+              <Button type="submit" color="secondary" variant="contained" disabled={isSubmitting}>
                 Upload File
               </Button>
             </Box>

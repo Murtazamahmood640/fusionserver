@@ -76,14 +76,14 @@ const TaskCalendar = () => {
   const tasksForSelectedDate = getTasksForDate(selectedDate);
 
   return (
-    <Box m="20px">
+    <Box m="20px" sx={{ pb: "40px" }}>
       <Header title="Task Calendar" subtitle="View and manage tasks by date" />
 
       {/* Navigation Links */}
       <Box mb="20px">
         <Button
           variant="contained"
-          color="primary"
+          color="secondary"
           sx={{ marginRight: 2 }}
           onClick={() => navigate('/assign-tasks')}
         >

@@ -177,7 +177,7 @@ const Clock = () => {
   const clockDiameter = isMobile ? 200 : 240; // Adjust clock size for mobile
 
   return (
-    <Box sx={{ padding: 3 }}>
+    <Box sx={{ pb: "40px" }}>
       <Header title="ATTENDANCE" subtitle="Mark & Manage Your Attendance" />
 
       {/* Mobile: Clock on top and table at bottom */}
@@ -194,7 +194,7 @@ const Clock = () => {
                   </Typography>
                   <Button
                     variant="contained"
-                    color={isActive ? 'secondary' : 'primary'}
+                    color={isActive ? 'secondary' : 'secondary'}
                     onClick={handleCheckin}
                     startIcon={isActive ? <PauseIcon /> : <PlayArrowIcon />}
                     sx={{ mt: 2 }}
@@ -268,13 +268,13 @@ const Clock = () => {
               <Typography variant="h4" sx={{ marginBottom: 2 }}>Mark Your Attendance Here</Typography>
               <Card sx={{ width: '100%', boxShadow: 3, borderRadius: '16px', border: '6px solid #2AEAE3', marginBottom: 4, textAlign: 'center' }}>
                 <CardContent sx={{ backgroundColor: theme.palette.background.paper }}>
-                  <Typography variant={isMobile ? "h3" : "h1"} sx={{ color: theme.palette.text.primary }}>{formatTime(elapsedTime)}</Typography>
+                  <Typography variant={isMobile ? "h3" : "h1"} sx={{ color: theme.palette.text.secondary }}>{formatTime(elapsedTime)}</Typography>
                   <Typography variant="subtitle1" sx={{ color: theme.palette.text.secondary }}>
                     Clocked In: {isActive ? checkInTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true }) : ''}
                   </Typography>
                   <Button
                     variant="contained"
-                    color={isActive ? 'secondary' : 'primary'}
+                    color={isActive ? 'secondary' : 'secondary'}
                     onClick={handleCheckin}
                     startIcon={isActive ? <PauseIcon /> : <PlayArrowIcon />}
                     sx={{ mt: 2 }}

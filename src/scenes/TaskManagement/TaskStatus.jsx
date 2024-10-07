@@ -49,7 +49,7 @@ const TaskStatus = () => {
   ];
 
   return (
-    <Box m="20px">
+    <Box m="20px" sx={{ pb: "40px" }}>
       <Header title="Task Status" subtitle="Tasks assigned by you" />
       <Box
         height="75vh"

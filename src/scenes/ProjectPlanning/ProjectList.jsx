@@ -136,7 +136,7 @@ const ProjectList = () => {
   };
 
   return (
-    <Box m={4}>
+    <Box m={4} sx={{ pb: "40px" }}>
            <Header title="Project List" subtitle="Manage All created projects" />
 
 
@@ -470,7 +470,7 @@ const ProjectList = () => {
             <Button onClick={() => setOpenUpdateDialog(false)} color="secondary">
               Cancel
             </Button>
-            <Button onClick={handleUpdateProject} color="primary" variant="contained">
+            <Button onClick={handleUpdateProject} color="secondary" variant="contained">
               Update
             </Button>
           </DialogActions>

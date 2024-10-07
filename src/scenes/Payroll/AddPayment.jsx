@@ -66,7 +66,7 @@ const AddPayment = () => {
     };
 
     return (
-        <Box m="20px">
+        <Box m="20px" sx={{ pb: "40px" }}>
             <Header title="ADD PAYMENT" subtitle="Record a new payment" />
             <Formik
                 initialValues={{
@@ -216,7 +216,7 @@ const AddPayment = () => {
                         </Box>
 
                         <Box display="flex" justifyContent="flex-end" mt="20px">
-                            <Button type="submit" color="primary" variant="contained">
+                            <Button type="submit" color="secondary" variant="contained">
                                 Add Payment
                             </Button>
                         </Box>

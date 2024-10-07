@@ -125,7 +125,7 @@ const PayeeList = () => {
                 <Box>
                     <Button 
                         variant="contained" 
-                        color="primary" 
+                        color="secondary" 
                         onClick={() => handleEditClick(params.row)}
                         sx={{ marginRight: 1, fontSize: isMobile ? '10px' : '12px' }} // Responsive font size
                     >
@@ -145,7 +145,7 @@ const PayeeList = () => {
     ];
 
     return (
-        <Box m="20px">
+        <Box m="20px" sx={{ pb: "40px" }}>
             <Header title="PAYEE LIST" subtitle="Manage Payees" />
             <Box
                 height="75vh"
@@ -266,7 +266,7 @@ const PayeeList = () => {
                     <Button onClick={handleCloseDialog} color="secondary">
                         Cancel
                     </Button>
-                    <Button onClick={handleFormSubmit} color="primary">
+                    <Button onClick={handleFormSubmit} color="secondary">
                         Save
                     </Button>
                 </DialogActions>

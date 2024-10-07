@@ -54,7 +54,7 @@ const AddClient = () => {
   };
 
   return (
-    <Box m="20px">
+    <Box m="20px" sx={{ pb: "40px" }}>
       <Header title="ADD CLIENT" subtitle="Add a New Client" />
       <Formik
         initialValues={initialValues}
@@ -184,7 +184,7 @@ const AddClient = () => {
               <Button
                 type="submit"
                 variant="contained"
-                color="primary"
+                color="secondary"
                 sx={{ gridColumn: 'span 12' }}
                 disabled={isSubmitting} // Disable the button while submitting
               >

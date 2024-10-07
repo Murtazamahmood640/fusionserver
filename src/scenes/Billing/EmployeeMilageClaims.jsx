@@ -45,7 +45,7 @@ const MilageClaims = () => {
   };
 
   return (
-    <Box m="20px">
+    <Box m="20px" sx={{ pb: "40px" }}>
       <Header title="ADD MILEAGE CLAIM" subtitle="Provide Brief Details" />
       <Formik
         initialValues={{
@@ -277,7 +277,7 @@ const MilageClaims = () => {
             </Box>
 
             <Box display="flex" justifyContent="flex-end" mt="20px">
-              <Button type="submit" color="primary" variant="contained">
+              <Button type="submit" color="secondary" variant="contained">
                 Add Mileage
               </Button>
             </Box>

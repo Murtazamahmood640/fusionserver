@@ -39,7 +39,7 @@ const EarningAndDeductions = ({ setTotalExpenses }) => {
   ];
 
   return (
-    <Box m="20px">
+    <Box m="20px" sx={{ pb: "40px" }}>
       <Header title="EARNING AND DEDUCTIONS" subtitle="Managing Employee Payroll" />
       <Box
         m="40px 0 0 0"

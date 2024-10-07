@@ -11,7 +11,7 @@ const MainComponent = () => {
   };
 
   return (
-    <Box m="20px">
+    <Box m="20px" sx={{ pb: "40px" }}>
       <Grid container spacing={2}>
         <Grid item xs={12} md={4}>
           <Clock onNewEntry={handleNewEntry} />

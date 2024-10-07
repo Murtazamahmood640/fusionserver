@@ -102,7 +102,7 @@ const ManageStakeholder = () => {
         <Box>
           <Button
             variant="contained"
-            color="primary"
+            color="secondary"
             onClick={() => handleEdit(params.row)}
             sx={{ marginRight: 1 }}
           >
@@ -121,7 +121,7 @@ const ManageStakeholder = () => {
   ];
 
   return (
-    <Box m="20px">
+    <Box m="20px" sx={{ pb: "40px" }}>
       <Header title="View Stakeholders" subtitle="Manage list of all Stakeholders" />
 
       <Box
@@ -218,7 +218,7 @@ const ManageStakeholder = () => {
           <Button onClick={handleCloseDialog} color="secondary">
             Cancel
           </Button>
-          <Button onClick={handleFormSubmit} color="primary">
+          <Button onClick={handleFormSubmit} color="secondary">
             Save
           </Button>
         </DialogActions>

@@ -206,7 +206,7 @@ const Feedback = () => {
   };
  
   return (
-    <Box m="20px">
+    <Box m="20px" sx={{ pb: "40px" }}>
       <Header title="FEEDBACK" subtitle="Provide your valuable feedback" />
       <Formik
         onSubmit={handleSubmit}
@@ -256,7 +256,7 @@ const Feedback = () => {
               />
             </Box>
             <Box display="flex" justifyContent="flex-end" mt="20px">
-              <Button type="submit" color="primary" variant="contained" sx={{ backgroundColor: '#007BFF' }} disabled={isSubmitting}>
+              <Button type="submit" color="secondary" variant="contained" sx={{ backgroundColor: '#007BFF' }} disabled={isSubmitting}>
                 Submit Feedback
               </Button>
             </Box>
@@ -283,7 +283,7 @@ const Feedback = () => {
           <Button onClick={clearAllHistory} variant="contained" color="error" sx={{ mt: 2 }}>
             Clear All History
           </Button>
-          <Button onClick={downloadFeedbackHistory} variant="contained" color="primary" sx={{ mt: 2, ml: 2 }}>
+          <Button onClick={downloadFeedbackHistory} variant="contained" color="secondary" sx={{ mt: 2, ml: 2 }}>
             Download Feedback History
           </Button>
         </Box>

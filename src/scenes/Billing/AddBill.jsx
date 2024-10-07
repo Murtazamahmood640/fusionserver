@@ -66,7 +66,7 @@ const AddBill = () => {
   };
 
   return (
-    <Box m="20px">
+    <Box m="20px" sx={{ pb: "40px" }}>
       <Header title="ADD BILL" subtitle="Add a New Bill" />
       <Formik
         initialValues={initialValues}
@@ -196,7 +196,7 @@ const AddBill = () => {
               <Button
                 type="submit"
                 variant="contained"
-                color="primary"
+                color="secondary"
                 sx={{ gridColumn: 'span 12' }}
                 aria-label="Save Bill"
               >

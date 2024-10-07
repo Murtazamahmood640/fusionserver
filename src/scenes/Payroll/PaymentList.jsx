@@ -76,7 +76,7 @@ const PaymentList = () => {
     ];
 
     return (
-        <Box m="20px">
+        <Box m="20px" sx={{ pb: "40px" }}>
             <Header title="VIEW PAYMENTS" subtitle="Manage Payment Records" />
             <Box
                 m="40px 0 0 0"

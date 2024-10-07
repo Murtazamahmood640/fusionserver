@@ -73,7 +73,7 @@ const Overview = () => {
   };
 
   return (
-    <Paper style={{ padding: 20, backgroundColor: theme.palette.background.paper }}>
+    <Paper style={{ padding: 40, backgroundColor: theme.palette.background.paper }} >
       <Header title="Sales Overview" subtitle="Overview of payroll, sales, and expenses" />
 
       {/* Top Section: 4 Grids */}

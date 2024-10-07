@@ -77,7 +77,7 @@ const EmployeeInfo = () => {
   };
 
   return (<>
-   <Box m="20px">
+   <Box m="20px" sx={{ pb: "40px" }}>
       <Header title="Add Employee to Payroll" subtitle="Enter Employee Payroll Details" />
       <Formik
         onSubmit={handleFormSubmit}
@@ -309,7 +309,7 @@ const EmployeeInfo = () => {
             <Button
               type="submit"
               variant="shadowed"
-              color="primary"
+              color="secondary"
               sx={{ marginTop: '20px' }}
             >
               Submit

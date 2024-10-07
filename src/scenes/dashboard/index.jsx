@@ -80,7 +80,7 @@ const Dashboard = () => {
   const progress = totalTasks > 0 ? completedTasks / totalTasks : 0;
 
   return (
-    <Box m="20px">
+    <Box m="20px" sx={{ pb: "40px" }}>
       {/* HEADER */}
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />

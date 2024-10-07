@@ -3,7 +3,7 @@ import { Box, Card, CardContent, Typography, Grid } from '@mui/material';
 
 const GridView = ({ invoices, navigate }) => {
   return (
-    <Grid container spacing={3}>
+    <Grid container spacing={3} sx={{ pb: "40px" }}>
       {invoices.map((data, i) => (
         <Grid item xs={12} sm={6} md={4} key={i}>
           <Card onClick={() => navigate(`/ViewInvoice/${data._id}`)} style={{ cursor: 'pointer' }}>
