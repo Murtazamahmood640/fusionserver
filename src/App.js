@@ -3,7 +3,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import Topbar from "./scenes/global/Topbar";
 import Sidebar from "./scenes/global/Sidebar";
-import Dashboard from "./scenes/dashboard";
+// import Dashboard from "./scenes/dashboard";
 import Team from "./scenes/tables/team";
 import Invoices from "./scenes/invoices";
 import Contacts from "./scenes/contacts";
@@ -31,7 +31,7 @@ import View from "./scenes/tables/ViewInvoice";
 import ViewOne from "./scenes/tables/viewoneinvoice";
 import { ColorModeContext, useMode } from "./theme";
 import Calendar from "./scenes/calendar/calendar";
-import Account from "./scenes/contacts/account";
+import Dashboard from "./scenes/contacts/account";
 import AssignTasks from "./scenes/form/AssignTasks";
 import ProjectTaskPage from "./scenes/form/ProjectTaskPage";
 // import TaskStatus from "./scenes/tables/TaskStatus";
@@ -109,6 +109,7 @@ function App() {
               <Route path="/reset-password/:token" element={<ResetPassword />} />
               <Route path="/dashboard" element={<ProtectedRoute Component={Dashboard} />} />
               
+
               {/* Time and Attendance Routes */}
               <Route path="/time/calendar" element={<ProtectedRoute Component={Calendar} />} />
               <Route path="/time/clock" element={<ProtectedRoute Component={Clock} />} />
@@ -208,7 +209,7 @@ function App() {
               <Route path="/view" element={<ProtectedRoute Component={View} />} />
               <Route path="/viewInvoice/:id" element={<ProtectedRoute Component={ViewOne} />} />
               <Route path="/project/:projectName" element={<ProtectedRoute Component={ProjectTaskPage} />} />
-              <Route path="/employee/manageprofile" element={<ProtectedRoute Component={Account} />} />
+              {/* <Route path="/employee/manageprofile" element={<ProtectedRoute Component={Dashboard} />} /> */}
               <Route path="/main" element={<ProtectedRoute Component={MainComponent} />} />
               <Route path="/barchart" element={<ProtectedRoute Component={BarChart} />} />
               <Route path="/pie" element={<ProtectedRoute Component={Pie} />} />

@@ -10,28 +10,52 @@ import 'react-toastify/dist/ReactToastify.css';
 const Doc = () => {
   const [filename, setFileName] = useState('');
 
-  const handleFormSubmit = async (values, { setSubmitting }) => {
+  const handleFormSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
+      setSubmitting(true);
+  
       let formData = new FormData();
-      formData.append('filename', values.documentName);
-      formData.append('sentBy', values.sentby);
-      formData.append('dated', values.dated);
-      formData.append('reason', values.reason);
-      formData.append('file', values.file);
+      formData.append('file', values.file); // The file to upload
+      formData.append('upload_preset', 'fusionfiles'); // Use your preset name here
+      formData.append('folder', 'documents'); // Specify the folder if needed
+      formData.append('context', `documentName=${values.documentName}|sentBy=${values.sentby}|dated=${values.dated}|reason=${values.reason}`); // Contextual information
+  
+      const cloudName = 'dawlennc5'; // Replace this with your actual cloud name
 
-      const res = await axios.post("https://hrserver1-8yj51ajr.b4a.run/api/document", formData);
-      console.log(res);
-      toast.success("File Uploaded!");
+      const res = await axios.post(`https://api.cloudinary.com/v1_1/${cloudName}/upload`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+  
+      // Prepare data to send to your backend
+      const documentData = {
+        filename: res.data.original_filename, // Cloudinary will return the file name
+        path: res.data.secure_url, // URL of the uploaded file
+        sentBy: values.sentby,
+        dated: values.dated,
+        reason: values.reason,
+      };
+
+      // Send the document data to your backend API
+      await axios.post('https://hrserver1-8yj51ajr.b4a.run/api/documents', documentData); // Adjust your endpoint as necessary
+
+      toast.success("File Uploaded Successfully!");
+  
+      resetForm();
+      setFileName('');
     } catch (error) {
-      console.error('Failed to upload file:', error);
-      toast.error("Failed to upload file");
+      const errorMessage = error.response 
+        ? error.response.data 
+        : error.message || "An unknown error occurred.";
+      toast.error(`Failed to upload file: ${errorMessage}`);
     } finally {
       setSubmitting(false);
     }
-  };
+  }
 
   return (
-    <Box m="20px" sx={{ pb: "40px" }}>
+    <Box m="20px">
       <Header title="DOCUMENT INFORMATION" subtitle="Upload a new document" />
       <Formik
         initialValues={initialValues}
@@ -53,7 +77,6 @@ const Doc = () => {
               <TextField
                 fullWidth
                 variant="filled"
-                type="text"
                 label="Document Name"
                 onBlur={handleBlur}
                 onChange={handleChange}
@@ -66,7 +89,6 @@ const Doc = () => {
               <TextField
                 fullWidth
                 variant="filled"
-                type="text"
                 label="Sent By"
                 onBlur={handleBlur}
                 onChange={handleChange}
@@ -79,7 +101,6 @@ const Doc = () => {
               <TextField
                 fullWidth
                 variant="filled"
-                type="text"
                 label="Reason / Label"
                 onBlur={handleBlur}
                 onChange={handleChange}
@@ -103,17 +124,18 @@ const Doc = () => {
                 sx={{ gridColumn: "span 6" }}
               />
               <input
-                accept=".pdf"
+                accept=".pdf,.png,.jpg,.jpeg"  // Allow both PDF and image uploads
                 id="fileupload"
                 type="file"
                 style={{ display: 'none' }}
                 onChange={(event) => {
-                  setFieldValue("file", event.currentTarget.files[0]);
-                  setFileName(event.currentTarget.files[0].name);
+                  const file = event.currentTarget.files[0];
+                  setFieldValue("file", file);
+                  setFileName(file ? file.name : '');
                 }}
               />
               <label htmlFor="fileupload" className='custom-file-upload' style={{ gridColumn: "span 6" }}>
-                <Button variant="contained" color="secondary" component="span">
+                <Button variant="contained" color="primary" component="span">
                   Upload File
                 </Button>
               </label>
@@ -122,8 +144,13 @@ const Doc = () => {
               </Box>
             </Box>
             <Box display="flex" justifyContent="flex-end" mt="20px">
-              <Button type="submit" color="secondary" variant="contained" disabled={isSubmitting}>
-                Upload File
+              <Button 
+                type="submit" 
+                color="primary" 
+                variant="contained" 
+                disabled={isSubmitting || !values.file}
+              >
+                {isSubmitting ? "Uploading..." : "Upload File"}
               </Button>
             </Box>
           </form>
@@ -134,11 +161,17 @@ const Doc = () => {
 };
 
 const checkoutSchema = yup.object().shape({
-  documentName: yup.string().required("required"),
-  sentby: yup.string().required("required"),
-  reason: yup.string().required("required"),
-  dated: yup.string().required("required"),
-  file: yup.mixed().required("required"),
+  documentName: yup.string().required("Document name is required"),
+  sentby: yup.string().required("Sender's name is required"),
+  reason: yup.string().required("Reason is required"),
+  dated: yup.string().required("Date is required"),
+  file: yup.mixed()
+    .required("File is required")
+    .test("fileType", "Unsupported File Format", value => {
+      return value && (value.type === 'application/pdf' || 
+                       value.type === 'image/jpeg' || 
+                       value.type === 'image/png');
+    }),
 });
 
 const initialValues = {
