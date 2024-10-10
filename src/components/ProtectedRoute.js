@@ -23,10 +23,12 @@ const ProtectedRoute = ({ Component }) => {
             "/payroll/deductions",
             "/expense/addexpense",
             '/others/addfeedback',
-            '/others/ViewFeedback',
+            '/others/feedbacklist',
             '/others/chatsupport',  
             "/documents/adddocument",
-            "/documents/viewdocuments"
+            "/documents/viewdocuments",
+            "/taskmanagement/taskstatus",
+            "/taskmanagement/taskcalendar",
             // Add other Manager-specific routes if needed
         ],
         Admin: [
@@ -76,7 +78,7 @@ const ProtectedRoute = ({ Component }) => {
             "/taskmanagement/mytasks",
             "/taskmanagement/taskcalendar",
             "/others/addfeedback",
-            '/others/ViewFeedback',
+            '/others/feedbacklist',
             "/others/chatsupport",
             "/billing/addcontractors",
             "/billing/addvendors",
@@ -114,8 +116,9 @@ const ProtectedRoute = ({ Component }) => {
             '/time/timeoffrequest',
             "/expense/addexpense",
             '/others/addfeedback',
-            '/others/ViewFeedback',
-            '/others/chatsupport'
+            '/others/chatsupport',
+            "/taskmanagement/taskstatus",
+            "/taskmanagement/taskcalendar",
         ],
         FinanceManager: [
             '/dashboard',
@@ -146,8 +149,9 @@ const ProtectedRoute = ({ Component }) => {
             "/billing/mileageclaims",
             "/billing/viewmileageclaims",
             '/others/addfeedback',
-            '/others/ViewFeedback',
-            '/others/chatsupport'
+            '/others/chatsupport',
+            "/taskmanagement/taskstatus",
+            "/taskmanagement/taskcalendar"
         ],
         SalesManager: [
             '/dashboard',
@@ -173,8 +177,8 @@ const ProtectedRoute = ({ Component }) => {
             "/sales/viewproduct",
             "/expenseclaims/employees",
             '/others/addfeedback',
-            '/others/ViewFeedback',
-            '/others/chatsupport'
+            '/others/chatsupport',  "/taskmanagement/taskstatus",
+            "/taskmanagement/taskcalendar"
         ],
         ProjectManager: [
             '/dashboard',
@@ -186,7 +190,6 @@ const ProtectedRoute = ({ Component }) => {
             '/time/timeoffrequest',
             "/expenseclaims/employees",
             "/others/addfeedback",
-            '/others/ViewFeedback',
             "/others/chatsupport",
             "/projectplanning/overview",
             '/projectplanning/create',
@@ -207,7 +210,6 @@ const ProtectedRoute = ({ Component }) => {
             '/expenseclaims/viewallclaims',
             '/expenseclaims/employees',
             '/others/addfeedback',
-            '/others/ViewFeedback',
             '/faq',
             '/others/chatsupport',
             '/projectplanning/milestones',

@@ -45,7 +45,7 @@ const AllDoc = () => {
 
   const fetchDocuments = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/documents");
+      const response = await axios.get("https://hrserver1-8yj51ajr.b4a.run/api/documents");
       if (response && response.data) {
         setDocuments(response.data);
       } else {
