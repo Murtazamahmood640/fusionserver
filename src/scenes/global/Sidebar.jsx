@@ -26,6 +26,7 @@ import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
 import GroupIcon from "@mui/icons-material/Group";
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
+import LiveHelpIcon from '@mui/icons-material/LiveHelp';
 import AddTaskIcon from "@mui/icons-material/AddTask";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import TaskIcon from "@mui/icons-material/Task";
@@ -58,6 +59,12 @@ import { AddBox } from "@mui/icons-material";
 import { ListAlt } from "@mui/icons-material";
 import ListIcon from "@mui/icons-material/List";
 import FlagIcon from "@mui/icons-material/Flag";
+import ReviewsIcon from '@mui/icons-material/Reviews';
+import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
+import PreviewIcon from '@mui/icons-material/Preview';
+import ManageHistoryIcon from '@mui/icons-material/ManageHistory';
+import NewspaperIcon from '@mui/icons-material/Newspaper';
+
 
 const Sidebar = () => {
   const theme = useTheme();
@@ -204,7 +211,7 @@ Fusion HR                    </Typography>
             <Box paddingLeft={isCollapsed ? undefined : "10%"}>
               <Item
                 title="Dashboard"
-                to="/employee/manageprofile"
+                to="/dashboard"
                 icon={<HomeOutlinedIcon />}
                 selected={selected}
                 setSelected={setSelected}
@@ -317,6 +324,110 @@ Fusion HR                    </Typography>
                     />
                   </SubMenu>
                   <SubMenu
+                    title="Announcements"
+                    icon={<TipsAndUpdatesIcon />}
+                    open={openDropdown === "announcements"}
+                    onOpenChange={() => handleDropdownClick("announcements")}
+                  >
+                    <Item
+                      title="Create Annoucements"
+                      to="/announcements/createannoucements"
+                      icon={<CreateNewFolderIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    <Item
+                      title="View Annoucements"
+                      to="/announcements/viewannoucements"
+                      icon={<PreviewIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    <Item
+                      title="Manage Annoucements"
+                      to="/announcements/manageannoucements"
+                      icon={<ManageHistoryIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    <Item
+                      title="News Feed"
+                      to="/announcements/newsfeed"
+                      icon={<NewspaperIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    
+                  </SubMenu>
+                  <SubMenu
+                      title="Payroll"
+                      icon={<PaymentsIcon />}
+                      open={openDropdown === "payroll"}
+                      onOpenChange={() => handleDropdownClick("payroll")}
+                    >
+                      <Item
+                        title="Overview"
+                        to="/payroll/overview"
+                        icon={<DashboardIcon />}
+                        selected={selected}
+                        setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                      />
+                      <Item
+                        title="Add Payee"
+                        to="/payroll/addpayee"
+                        icon={<PersonAddAlt1Icon />}
+                        selected={selected}
+                        setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                      />
+                      <Item
+                        title="List Of Payees"
+                        to="/payroll/payeelist"
+                        icon={<GroupIcon />}
+                        selected={selected}
+                        setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                      />
+
+                      <Item
+                        title="Add Payment Records"
+                        to="/payroll/addpaymentrecords"
+                        icon={<PaymentIcon />}
+                        selected={selected}
+                        setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                      />
+                      <Item
+                        title="View Payment Records"
+                        to="/payroll/viewpaymentrecords"
+                        icon={<VisibilityIcon />}
+                        selected={selected}
+                        setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                      />
+                      <Item
+                        title="Earnings"
+                        to="/payroll/earnings"
+                        icon={<TrendingUpIcon />}
+                        selected={selected}
+                        setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                      />
+                      <Item
+                        title="Deductions"
+                        to="/payroll/deductions"
+                        icon={<FormatListNumberedIcon />}
+                        selected={selected}
+                        setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                      />
+                    </SubMenu>
+                  <SubMenu
                     title="Expense Claims"
                     icon={<AssignmentTurnedInIcon />}
                     open={openDropdown === "expenseclaims"}
@@ -326,14 +437,6 @@ Fusion HR                    </Typography>
                       title="Expense Claims (For Employees)"
                       to="/expenseclaims/employees"
                       icon={<PeopleIcon />}
-                      selected={selected}
-                      setSelected={setSelected}
-                      handleMenuItemClick={handleMenuItemClick}
-                    />
-                    <Item
-                      title="View All Claims"
-                      to="/expenseclaims/viewallclaims"
-                      icon={<ViewListIcon />}
                       selected={selected}
                       setSelected={setSelected}
                       handleMenuItemClick={handleMenuItemClick}
@@ -356,7 +459,15 @@ Fusion HR                    </Typography>
                     <Item
                       title="FAQs"
                       to="/faq"
-                      icon={<QuestionAnswerIcon />}
+                      icon={<LiveHelpIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    <Item
+                      title="View Feedbacks"
+                      to="/others/ViewFeedback"
+                      icon={<ReviewsIcon />}
                       selected={selected}
                       setSelected={setSelected}
                       handleMenuItemClick={handleMenuItemClick}
@@ -382,14 +493,14 @@ Fusion HR                    </Typography>
                     open={openDropdown === "employee"}
                     onOpenChange={() => handleDropdownClick("employee")}
                   >
-                    <Item
+                    {/* <Item
                       title="Manage Profile"
                       to="/employee/manageprofile"
                       icon={<AccountCircleIcon />}
                       selected={selected}
                       setSelected={setSelected}
                       handleMenuItemClick={handleMenuItemClick}
-                    />
+                    /> */}
                   </SubMenu>
                   <SubMenu
                     title="Time and Attendance"
@@ -429,14 +540,46 @@ Fusion HR                    </Typography>
                       setSelected={setSelected}
                       handleMenuItemClick={handleMenuItemClick}
                     />
+                  </SubMenu>
+                  <SubMenu
+                    title="Announcements"
+                    icon={<TipsAndUpdatesIcon />}
+                    open={openDropdown === "announcements"}
+                    onOpenChange={() => handleDropdownClick("announcements")}
+                  >
                     <Item
-                      title="Timeoff Approval"
-                      to="/time/timeoffapproval"
-                      icon={<AccountBalanceIcon />}
+                      title="Create Annoucements"
+                      to="/announcements/createannoucements"
+                      icon={<CreateNewFolderIcon />}
                       selected={selected}
                       setSelected={setSelected}
                       handleMenuItemClick={handleMenuItemClick}
                     />
+                    <Item
+                      title="View Annoucements"
+                      to="/announcements/viewannoucements"
+                      icon={<PreviewIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    <Item
+                      title="Manage Annoucements"
+                      to="/announcements/manageannoucements"
+                      icon={<ManageHistoryIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    <Item
+                      title="News Feed"
+                      to="/announcements/newsfeed"
+                      icon={<NewspaperIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    
                   </SubMenu>
                   <SubMenu
                     title="Expense Claims"
@@ -448,14 +591,6 @@ Fusion HR                    </Typography>
                       title="Expense Claims (For Employees)"
                       to="/expenseclaims/employees"
                       icon={<PeopleIcon />}
-                      selected={selected}
-                      setSelected={setSelected}
-                      handleMenuItemClick={handleMenuItemClick}
-                    />
-                    <Item
-                      title="View All Claims"
-                      to="/expenseclaims/viewallclaims"
-                      icon={<ViewListIcon />}
                       selected={selected}
                       setSelected={setSelected}
                       handleMenuItemClick={handleMenuItemClick}
@@ -478,7 +613,15 @@ Fusion HR                    </Typography>
                      <Item
                       title="FAQs"
                       to="/faq"
-                      icon={<QuestionAnswerIcon />}
+                      icon={<LiveHelpIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    <Item
+                      title="View Feedbacks"
+                      to="/others/ViewFeedback"
+                      icon={<ReviewsIcon />}
                       selected={selected}
                       setSelected={setSelected}
                       handleMenuItemClick={handleMenuItemClick}
@@ -506,14 +649,14 @@ Fusion HR                    </Typography>
                       open={openDropdown === "employee"}
                       onOpenChange={() => handleDropdownClick("employee")}
                     >
-                      <Item
+                      {/* <Item
                         title="Manage Profile"
                         to="/employee/manageprofile"
                         icon={<AccountCircleIcon />}
                         selected={selected}
                         setSelected={setSelected}
                       handleMenuItemClick={handleMenuItemClick}
-                      />
+                      /> */}
                     </SubMenu>
                     <SubMenu
                       title="Time and Attendance"
@@ -553,15 +696,47 @@ Fusion HR                    </Typography>
                         setSelected={setSelected}
                       handleMenuItemClick={handleMenuItemClick}
                       />
-                      <Item
-                        title="Timeoff Approval"
-                        to="/time/timeoffapproval"
-                        icon={<AccountBalanceIcon />}
-                        selected={selected}
-                        setSelected={setSelected}
-                      handleMenuItemClick={handleMenuItemClick}
-                      />
                     </SubMenu>
+                    <SubMenu
+                    title="Announcements"
+                    icon={<TipsAndUpdatesIcon />}
+                    open={openDropdown === "announcements"}
+                    onOpenChange={() => handleDropdownClick("announcements")}
+                  >
+                    <Item
+                      title="Create Annoucements"
+                      to="/announcements/createannoucements"
+                      icon={<CreateNewFolderIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    <Item
+                      title="View Annoucements"
+                      to="/announcements/viewannoucements"
+                      icon={<PreviewIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    <Item
+                      title="Manage Annoucements"
+                      to="/announcements/manageannoucements"
+                      icon={<ManageHistoryIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    <Item
+                      title="News Feed"
+                      to="/announcements/newsfeed"
+                      icon={<NewspaperIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    
+                  </SubMenu>
                     <SubMenu
                       title="Payroll"
                       icon={<PaymentsIcon />}
@@ -609,14 +784,6 @@ Fusion HR                    </Typography>
                         setSelected={setSelected}
                       handleMenuItemClick={handleMenuItemClick}
                       />
-                        <Item
-                      title="Working hours"
-                      to="/payroll/employeeworkinghours"
-                      icon={<AccessAlarmsIcon />}
-                      selected={selected}
-                      setSelected={setSelected}
-                      handleMenuItemClick={handleMenuItemClick}
-                    />
                       <Item
                         title="Earnings"
                         to="/payroll/earnings"
@@ -768,7 +935,7 @@ Fusion HR                    </Typography>
                        <Item
                       title="FAQs"
                       to="/faq"
-                      icon={<QuestionAnswerIcon />}
+                      icon={<LiveHelpIcon />}
                       selected={selected}
                       setSelected={setSelected}
                       handleMenuItemClick={handleMenuItemClick}
@@ -781,6 +948,14 @@ Fusion HR                    </Typography>
                         setSelected={setSelected}
                       handleMenuItemClick={handleMenuItemClick}
                       />
+                      <Item
+                      title="View Feedbacks"
+                      to="/others/ViewFeedback"
+                      icon={<ReviewsIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
                       {/* <Item
                         title="Chat Support"
                         to="/others/chatsupport"
@@ -797,95 +972,19 @@ Fusion HR                    </Typography>
               {userRole === "ProjectManager" && (
                 <>
                   <SubMenu
-                    title="Documents"
-                    icon={<DescriptionIcon />}
-                    open={openDropdown === "documents"}
-                    onOpenChange={() => handleDropdownClick("documents")}
-                  >
-                    <Item
-                      title="Add Document"
-                      to="/documents/adddocument"
-                      icon={<NoteAddIcon />}
-                      selected={selected}
-                      setSelected={setSelected}
-                      handleMenuItemClick={handleMenuItemClick}
-                    />
-                    <Item
-                      title="View Documents"
-                      to="/documents/viewdocuments"
-                      icon={<DocumentScannerIcon />}
-                      selected={selected}
-                      setSelected={setSelected}
-                      handleMenuItemClick={handleMenuItemClick}
-                    />
-                  </SubMenu>
-                  <SubMenu
-                    title="Project Planning"
-                    icon={<CreateNewFolderIcon />} // Example icon for the submenu
-                    open={openDropdown === "projectplanning"}
-                    onOpenChange={() => handleDropdownClick("projectplanning")}
-                  >
-                    <Item
-                      title="Project Overview"
-                      to="/projectplanning/overview"
-                      icon={<DashboardIcon />} // DashboardIcon represents an overview or main dashboard
-                      selected={selected}
-                      setSelected={setSelected}
-                      handleMenuItemClick={handleMenuItemClick}
-                    />
-                    <Item
-                      title="Create Project"
-                      to="/projectplanning/create"
-                      icon={<NoteAddIcon />} // NoteAddIcon represents adding or creating new content
-                      selected={selected}
-                      setSelected={setSelected}
-                      handleMenuItemClick={handleMenuItemClick}
-                    />
-                    <Item
-                      title="Project List"
-                      to="/projects"
-                      icon={<ListIcon />} // ListIcon represents a list or collection of items
-                      selected={selected}
-                      setSelected={setSelected}
-                      handleMenuItemClick={handleMenuItemClick}
-                    />
-                    <Item
-                      title="Add Milestone"
-                      to="/projectplanning/milestones"
-                      icon={<FlagIcon />} // FlagIcon represents a milestone or goal
-                      selected={selected}
-                      setSelected={setSelected}
-                      handleMenuItemClick={handleMenuItemClick}
-                    />
-                    <Item
-                      title="View Milestones"
-                      to="/projectplanning/viewmilestones"
-                      icon={<VisibilityIcon />} // VisibilityIcon represents viewing or inspecting something
-                      selected={selected}
-                      setSelected={setSelected}
-                      handleMenuItemClick={handleMenuItemClick}
-                    />
-                  </SubMenu>
-                </>
-              )}
-              {/* end project manager */}
-              {/* team lead */}
-              {userRole === "TeamLead" && (
-                <>
-                  <SubMenu
                     title="Employee Data"
                     icon={<PeopleOutlinedIcon />}
                     open={openDropdown === "employee"}
                     onOpenChange={() => handleDropdownClick("employee")}
                   >
-                    <Item
+                    {/* <Item
                       title="Manage Profile"
                       to="/employee/manageprofile"
                       icon={<AccountCircleIcon />}
                       selected={selected}
                       setSelected={setSelected}
                       handleMenuItemClick={handleMenuItemClick}
-                    />
+                    /> */}
                   </SubMenu>
                   <SubMenu
                     title="Time and Attendance"
@@ -925,15 +1024,243 @@ Fusion HR                    </Typography>
                       setSelected={setSelected}
                       handleMenuItemClick={handleMenuItemClick}
                     />
+                  </SubMenu>
+                  <SubMenu
+                    title="Announcements"
+                    icon={<TipsAndUpdatesIcon />}
+                    open={openDropdown === "announcements"}
+                    onOpenChange={() => handleDropdownClick("announcements")}
+                  >
                     <Item
-                      title="Timeoff Approval"
-                      to="/time/timeoffapproval"
-                      icon={<AccountBalanceIcon />}
+                      title="Create Annoucements"
+                      to="/announcements/createannoucements"
+                      icon={<CreateNewFolderIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    <Item
+                      title="View Annoucements"
+                      to="/announcements/viewannoucements"
+                      icon={<PreviewIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    <Item
+                      title="Manage Annoucements"
+                      to="/announcements/manageannoucements"
+                      icon={<ManageHistoryIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    <Item
+                      title="News Feed"
+                      to="/announcements/newsfeed"
+                      icon={<NewspaperIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    
+                  </SubMenu>
+                  <SubMenu
+                    title="Project Planning"
+                    icon={<CreateNewFolderIcon />} // Example icon for the submenu
+                    open={openDropdown === "projectplanning"}
+                    onOpenChange={() => handleDropdownClick("projectplanning")}
+                  >
+                    <Item
+                      title="Project Overview"
+                      to="/projectplanning/overview"
+                      icon={<DashboardIcon />} // DashboardIcon represents an overview or main dashboard
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    <Item
+                      title="Create Project"
+                      to="/projectplanning/create"
+                      icon={<NoteAddIcon />} // NoteAddIcon represents adding or creating new content
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    <Item
+                      title="Add Milestone"
+                      to="/projectplanning/milestones"
+                      icon={<FlagIcon />} // FlagIcon represents a milestone or goal
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    /> 
+                  </SubMenu>
+                  <SubMenu
+                    title="Others"
+                    icon={<MoreHorizIcon />}
+                    open={openDropdown === "others"}
+                    onOpenChange={() => handleDropdownClick("others")}
+                  >
+                    <Item
+                      title="Add Feedback"
+                      to="/others/addfeedback"
+                      icon={<FeedbackIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    <Item
+                      title="View Feedbacks"
+                      to="/others/ViewFeedback"
+                      icon={<ReviewsIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                     <Item
+                      title="FAQs"
+                      to="/faq"
+                      icon={<LiveHelpIcon />}
                       selected={selected}
                       setSelected={setSelected}
                       handleMenuItemClick={handleMenuItemClick}
                     />
                   </SubMenu>
+                  <SubMenu
+                    title="Task Management"
+                    icon={<AssignmentIcon />} // Example icon
+                    open={openDropdown === "taskmanagement"}
+                    onOpenChange={() => handleDropdownClick("taskmanagement")}
+                  >
+                    <Item
+                      title="Assign Tasks"
+                      to="/taskmanagement/assigntasks"
+                      icon={<TaskIcon />} // Example icon for assigning tasks
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    <Item
+                      title="Task Status"
+                      to="/taskmanagement/taskstatus"
+                      icon={<FormatListNumberedIcon />} // Example icon for task status
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    <Item
+                      title="Task Calendar"
+                      to="/taskmanagement/taskcalendar"
+                      icon={<CalendarTodayOutlinedIcon />} // Example icon for task calendar
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                  </SubMenu>
+                </>
+              )}
+              {/* end project manager */}
+              {/* team lead */}
+              {userRole === "TeamLead" && (
+                <>
+                  <SubMenu
+                    title="Employee Data"
+                    icon={<PeopleOutlinedIcon />}
+                    open={openDropdown === "employee"}
+                    onOpenChange={() => handleDropdownClick("employee")}
+                  >
+                    {/* <Item
+                      title="Manage Profile"
+                      to="/employee/manageprofile"
+                      icon={<AccountCircleIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    /> */}
+                  </SubMenu>
+                  <SubMenu
+                    title="Time and Attendance"
+                    icon={<AccessAlarmsIcon />}
+                    open={openDropdown === "time"}
+                    onOpenChange={() => handleDropdownClick("time")}
+                  >
+                    <Item
+                      title="Clock"
+                      to="/time/clock"
+                      icon={<AccessAlarmsIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    <Item
+                      title="Calendar"
+                      to="/time/calendar"
+                      icon={<CalendarTodayOutlinedIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    <Item
+                      title="Holidays"
+                      to="/time/holidays"
+                      icon={<HolidayVillageIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    <Item
+                      title="Timeoff Request"
+                      to="/time/timeoffrequest"
+                      icon={<AccessTimeIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                  </SubMenu>
+
+                  <SubMenu
+                    title="Announcements"
+                    icon={<TipsAndUpdatesIcon />}
+                    open={openDropdown === "announcements"}
+                    onOpenChange={() => handleDropdownClick("announcements")}
+                  >
+                    <Item
+                      title="Create Annoucements"
+                      to="/announcements/createannoucements"
+                      icon={<CreateNewFolderIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    <Item
+                      title="View Annoucements"
+                      to="/announcements/viewannoucements"
+                      icon={<PreviewIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    <Item
+                      title="Manage Annoucements"
+                      to="/announcements/manageannoucements"
+                      icon={<ManageHistoryIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    <Item
+                      title="News Feed"
+                      to="/announcements/newsfeed"
+                      icon={<NewspaperIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    
+                  </SubMenu>
+
+
                   <SubMenu
                     title="Expense Claims"
                     icon={<AssignmentTurnedInIcon />}
@@ -971,10 +1298,18 @@ Fusion HR                    </Typography>
                       setSelected={setSelected}
                       handleMenuItemClick={handleMenuItemClick}
                     />
+                    <Item
+                      title="View Feedbacks"
+                      to="/others/ViewFeedback"
+                      icon={<ReviewsIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
                      <Item
                       title="FAQs"
                       to="/faq"
-                      icon={<QuestionAnswerIcon />}
+                      icon={<LiveHelpIcon />}
                       selected={selected}
                       setSelected={setSelected}
                       handleMenuItemClick={handleMenuItemClick}
@@ -987,6 +1322,52 @@ Fusion HR                    </Typography>
                       setSelected={setSelected}
                       handleMenuItemClick={handleMenuItemClick}
                     /> */}
+                  </SubMenu>
+                  <SubMenu
+                    title="Project Planning"
+                    icon={<CreateNewFolderIcon />} // Example icon for the submenu
+                    open={openDropdown === "projectplanning"}
+                    onOpenChange={() => handleDropdownClick("projectplanning")}
+                  >
+                    <Item
+                      title="Add Milestone"
+                      to="/projectplanning/milestones"
+                      icon={<FlagIcon />} // FlagIcon represents a milestone or goal
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    /> 
+                  </SubMenu>
+                  <SubMenu
+                    title="Task Management"
+                    icon={<AssignmentIcon />} // Example icon
+                    open={openDropdown === "taskmanagement"}
+                    onOpenChange={() => handleDropdownClick("taskmanagement")}
+                  >
+                    <Item
+                      title="Assign Tasks"
+                      to="/taskmanagement/assigntasks"
+                      icon={<TaskIcon />} // Example icon for assigning tasks
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    <Item
+                      title="Task Status"
+                      to="/taskmanagement/taskstatus"
+                      icon={<FormatListNumberedIcon />} // Example icon for task status
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    <Item
+                      title="Task Calendar"
+                      to="/taskmanagement/taskcalendar"
+                      icon={<CalendarTodayOutlinedIcon />} // Example icon for task calendar
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
                   </SubMenu>
                 </>
               )}
@@ -1002,14 +1383,14 @@ Fusion HR                    </Typography>
                     open={openDropdown === "employee"}
                     onOpenChange={() => handleDropdownClick("employee")}
                   >
-                    <Item
+                    {/* <Item
                       title="Manage Profile"
                       to="/employee/manageprofile"
                       icon={<AccountCircleIcon />}
                       selected={selected}
                       setSelected={setSelected}
                       handleMenuItemClick={handleMenuItemClick}
-                    />
+                    /> */}
                     <Item
                       title="Create User"
                       to="/employee/createuser"
@@ -1098,6 +1479,47 @@ Fusion HR                    </Typography>
                       setSelected={setSelected}
                       handleMenuItemClick={handleMenuItemClick}
                     />
+                  </SubMenu>
+
+                  <SubMenu
+                    title="Announcements"
+                    icon={<TipsAndUpdatesIcon />}
+                    open={openDropdown === "announcements"}
+                    onOpenChange={() => handleDropdownClick("announcements")}
+                  >
+                    <Item
+                      title="Create Annoucements"
+                      to="/announcements/createannoucements"
+                      icon={<CreateNewFolderIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    <Item
+                      title="View Annoucements"
+                      to="/announcements/viewannoucements"
+                      icon={<PreviewIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    <Item
+                      title="Manage Annoucements"
+                      to="/announcements/manageannoucements"
+                      icon={<ManageHistoryIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    <Item
+                      title="News Feed"
+                      to="/announcements/newsfeed"
+                      icon={<NewspaperIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
+                    
                   </SubMenu>
 
                   <SubMenu
@@ -1591,10 +2013,18 @@ Fusion HR                    </Typography>
                       setSelected={setSelected}
                       handleMenuItemClick={handleMenuItemClick}
                     />
+                    <Item
+                      title="View Feedbacks"
+                      to="/others/ViewFeedback"
+                      icon={<ReviewsIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                      handleMenuItemClick={handleMenuItemClick}
+                    />
                      <Item
                       title="FAQs"
                       to="/faq"
-                      icon={<QuestionAnswerIcon />}
+                      icon={<LiveHelpIcon />}
                       selected={selected}
                       setSelected={setSelected}
                       handleMenuItemClick={handleMenuItemClick}
