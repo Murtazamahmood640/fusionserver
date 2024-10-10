@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { CssBaseline, ThemeProvider } from "@mui/material";
+import { Helmet } from "react-helmet"; // Import Helmet
 import Topbar from "./scenes/global/Topbar";
 import Sidebar from "./scenes/global/Sidebar";
-// import Dashboard from "./scenes/dashboard";
+import Dashboard from "./scenes/contacts/account";
 import Team from "./scenes/tables/team";
 import Invoices from "./scenes/invoices";
 import Contacts from "./scenes/contacts";
@@ -31,7 +32,7 @@ import View from "./scenes/tables/ViewInvoice";
 import ViewOne from "./scenes/tables/viewoneinvoice";
 import { ColorModeContext, useMode } from "./theme";
 import Calendar from "./scenes/calendar/calendar";
-import Dashboard from "./scenes/contacts/account";
+import Account from "./scenes/contacts/account";
 import AssignTasks from "./scenes/form/AssignTasks";
 import ProjectTaskPage from "./scenes/form/ProjectTaskPage";
 // import TaskStatus from "./scenes/tables/TaskStatus";
@@ -84,11 +85,51 @@ import ResetPassword from "./scenes/Login/ResetPassword";
 import AddStakeholder from "./scenes/StakeholderManagement/AddStakeholder";
 import ManageStakeholder from "./scenes/StakeholderManagement/ManageStakeholder";
 import EmployeeWorkTimePage from "./scenes/Payroll/EmployeeWorkingTime";
+import GeneratePerformanceReport from "./scenes/Employeeperformance/GeneratePerformanceReport ";
+import CreateGoal from "./scenes/Employeeperformance/CreateGoal ";
+import CreatePerformanceReview from "./scenes/Employeeperformance/CreatePerformanceReview ";
+import CreateTraining from "./scenes/Employeeperformance/CreateTraining ";
+import ViewFeedback from "./scenes/tables/ViewFeedback";
+import CreateAnnouncements from "./scenes/Announcements/CreateAnnoucements";
+import ManageAnnouncements from "./scenes/Announcements/ManageAnnouncements";
+import NewsFeed from "./scenes/Announcements/NewsFeed";
+import ViewAnnouncements from "./scenes/Announcements/ViewAnnouncement";
+
+
 function App() {
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
   const location = useLocation();
-
+  const navigate = useNavigate();
+  const logoutTime = 15 * 60 * 1000;  // 15 minutes
+ 
+  let logoutTimer;
+ 
+  // Log out function
+  const logout = () => {
+    // Clear user session data (like JWT token or session info)
+    localStorage.removeItem('login');
+    // Redirect to login page
+    navigate('/');
+  };
+ 
+  // Reset logout timer on user activity
+  const resetLogoutTimer = () => {
+    if (logoutTimer) clearTimeout(logoutTimer);
+    logoutTimer = setTimeout(logout, logoutTime);
+  };
+ 
+  useEffect(() => {
+    resetLogoutTimer();
+ 
+    window.addEventListener('mousemove', resetLogoutTimer);
+    window.addEventListener('keypress', resetLogoutTimer);
+ 
+    return () => {
+      window.removeEventListener('mousemove', resetLogoutTimer);
+      window.removeEventListener('keypress', resetLogoutTimer);
+    };
+  }, []);
   const isLoginPage = location.pathname === "/";
   const isAuthPage = location.pathname === "/" || location.pathname === "/forgot-password" || location.pathname.startsWith("/reset-password");
 
@@ -96,6 +137,9 @@ function App() {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
+        <Helmet>
+          <title>{`Fusion HR - ${location.pathname.split('/')[1] || 'Home'}`}</title> {/* Dynamic Title */}
+        </Helmet>
         <div className="app">
           {/* Conditionally render Sidebar only if not on login, forgot-password, or reset-password pages */}
           {!isAuthPage && <Sidebar isSidebar={isSidebar} />}
@@ -109,7 +153,6 @@ function App() {
               <Route path="/reset-password/:token" element={<ResetPassword />} />
               <Route path="/dashboard" element={<ProtectedRoute Component={Dashboard} />} />
               
-
               {/* Time and Attendance Routes */}
               <Route path="/time/calendar" element={<ProtectedRoute Component={Calendar} />} />
               <Route path="/time/clock" element={<ProtectedRoute Component={Clock} />} />
@@ -182,10 +225,18 @@ function App() {
               <Route path="/taskmanagement/mytasks" element={<ProtectedRoute Component={MyTasks } />} />
               <Route path="/taskmanagement/taskcalendar" element={<ProtectedRoute Component={TaskCalendar } />} />
 
+              {/* Performance Managmenet Routes */}
+
+              <Route path="/employeeperformance/generateperformancereport" element={<ProtectedRoute Component={GeneratePerformanceReport } />} />
+              <Route path="/employeeperformance/creategoal" element={<ProtectedRoute Component={CreateGoal } />} />
+              <Route path="/employeeperformance/createperformancereview" element={<ProtectedRoute Component={CreatePerformanceReview } />} />
+              <Route path="/employeeperformance/createtraining" element={<ProtectedRoute Component={CreateTraining } />} />
+
 
               {/* Feedback Routes */}
 
               <Route path="/others/addfeedback" element={<ProtectedRoute Component={Feedback} />} />
+              <Route path="/others/feedbacklist" element={<ProtectedRoute Component={ViewFeedback} />} />
               
               {/* Messages Routes */}
               <Route path="/others/chatsupport" element={<ProtectedRoute Component={Chatbot} />} />
@@ -209,7 +260,7 @@ function App() {
               <Route path="/view" element={<ProtectedRoute Component={View} />} />
               <Route path="/viewInvoice/:id" element={<ProtectedRoute Component={ViewOne} />} />
               <Route path="/project/:projectName" element={<ProtectedRoute Component={ProjectTaskPage} />} />
-              {/* <Route path="/employee/manageprofile" element={<ProtectedRoute Component={Dashboard} />} /> */}
+              <Route path="/employee/manageprofile" element={<ProtectedRoute Component={Account} />} />
               <Route path="/main" element={<ProtectedRoute Component={MainComponent} />} />
               <Route path="/barchart" element={<ProtectedRoute Component={BarChart} />} />
               <Route path="/pie" element={<ProtectedRoute Component={Pie} />} />
@@ -219,6 +270,14 @@ function App() {
               <Route path="/geography" element={<ProtectedRoute Component={Geography} />} />
               <Route path="/check" element={<ProtectedRoute Component={Test} />} />
               <Route path="/clockgrid" element={<ProtectedRoute Component={ClockGrid} />} />
+              
+              <Route path="/announcements/createannoucements" element={<ProtectedRoute Component={CreateAnnouncements} />} />
+              <Route path="/announcements/viewannouncement" element={<ProtectedRoute Component={ViewAnnouncements} />} />
+              <Route path="/announcements/manageannouncements" element={<ProtectedRoute Component={ManageAnnouncements} />} />
+              <Route path="/announcements/newsfeed" element={<ProtectedRoute Component={NewsFeed} />} />
+
+
+
             </Routes>
           </main>
         </div>
