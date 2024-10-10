@@ -90,10 +90,10 @@ import EmployeeWorkTimePage from "./scenes/Payroll/EmployeeWorkingTime";
 // import CreatePerformanceReview from "./scenes/Employeeperformance/CreatePerformanceReview ";
 // import CreateTraining from "./scenes/Employeeperformance/CreateTraining ";
 import ViewFeedback from "./scenes/tables/ViewFeedback";
-import CreateAnnouncements from "./scenes/Announcements/CreateAnnoucements";
-import ManageAnnouncements from "./scenes/Announcements/ManageAnnouncements";
-import NewsFeed from "./scenes/Announcements/NewsFeed";
-import ViewAnnouncements from "./scenes/Announcements/ViewAnnouncement";
+// import CreateAnnouncements from "./scenes/Announcements/CreateAnnoucements";
+// import ManageAnnouncements from "./scenes/Announcements/ManageAnnouncements";
+// import NewsFeed from "./scenes/Announcements/NewsFeed";
+// import ViewAnnouncements from "./scenes/Announcements/ViewAnnouncement";
 
 
 function App() {
@@ -271,10 +271,10 @@ function App() {
               <Route path="/check" element={<ProtectedRoute Component={Test} />} />
               <Route path="/clockgrid" element={<ProtectedRoute Component={ClockGrid} />} />
               
-              <Route path="/announcements/createannoucements" element={<ProtectedRoute Component={CreateAnnouncements} />} />
+              {/* <Route path="/announcements/createannoucements" element={<ProtectedRoute Component={CreateAnnouncements} />} />
               <Route path="/announcements/viewannouncement" element={<ProtectedRoute Component={ViewAnnouncements} />} />
               <Route path="/announcements/manageannouncements" element={<ProtectedRoute Component={ManageAnnouncements} />} />
-              <Route path="/announcements/newsfeed" element={<ProtectedRoute Component={NewsFeed} />} />
+              <Route path="/announcements/newsfeed" element={<ProtectedRoute Component={NewsFeed} />} /> */}
 
 
 
