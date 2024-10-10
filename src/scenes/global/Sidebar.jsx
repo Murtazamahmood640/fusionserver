@@ -466,7 +466,7 @@ Fusion HR                    </Typography>
                     />
                     <Item
                       title="View Feedbacks"
-                      to="/others/ViewFeedback"
+                      to="/others/feedbacklist"
                       icon={<ReviewsIcon />}
                       selected={selected}
                       setSelected={setSelected}
@@ -618,14 +618,7 @@ Fusion HR                    </Typography>
                       setSelected={setSelected}
                       handleMenuItemClick={handleMenuItemClick}
                     />
-                    <Item
-                      title="View Feedbacks"
-                      to="/others/ViewFeedback"
-                      icon={<ReviewsIcon />}
-                      selected={selected}
-                      setSelected={setSelected}
-                      handleMenuItemClick={handleMenuItemClick}
-                    />
+               
                     {/* <Item
                       title="Chat Support"
                       to="/others/chatsupport"
@@ -948,14 +941,7 @@ Fusion HR                    </Typography>
                         setSelected={setSelected}
                       handleMenuItemClick={handleMenuItemClick}
                       />
-                      <Item
-                      title="View Feedbacks"
-                      to="/others/ViewFeedback"
-                      icon={<ReviewsIcon />}
-                      selected={selected}
-                      setSelected={setSelected}
-                      handleMenuItemClick={handleMenuItemClick}
-                    />
+                    
                       {/* <Item
                         title="Chat Support"
                         to="/others/chatsupport"
@@ -1112,7 +1098,7 @@ Fusion HR                    </Typography>
                     />
                     <Item
                       title="View Feedbacks"
-                      to="/others/ViewFeedback"
+                      to="/others/feedbacklist"
                       icon={<ReviewsIcon />}
                       selected={selected}
                       setSelected={setSelected}
@@ -1298,14 +1284,7 @@ Fusion HR                    </Typography>
                       setSelected={setSelected}
                       handleMenuItemClick={handleMenuItemClick}
                     />
-                    <Item
-                      title="View Feedbacks"
-                      to="/others/ViewFeedback"
-                      icon={<ReviewsIcon />}
-                      selected={selected}
-                      setSelected={setSelected}
-                      handleMenuItemClick={handleMenuItemClick}
-                    />
+                 
                      <Item
                       title="FAQs"
                       to="/faq"
@@ -2015,7 +1994,7 @@ Fusion HR                    </Typography>
                     />
                     <Item
                       title="View Feedbacks"
-                      to="/others/ViewFeedback"
+                      to="/others/feedbacklist"
                       icon={<ReviewsIcon />}
                       selected={selected}
                       setSelected={setSelected}

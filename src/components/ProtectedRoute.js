@@ -118,6 +118,7 @@ const ProtectedRoute = ({ Component }) => {
             '/others/addfeedback',
             '/others/chatsupport',
             "/taskmanagement/taskstatus",
+            "/taskmanagement/mytasks",
             "/taskmanagement/taskcalendar",
         ],
         FinanceManager: [
