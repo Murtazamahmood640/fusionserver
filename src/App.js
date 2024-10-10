@@ -85,10 +85,10 @@ import ResetPassword from "./scenes/Login/ResetPassword";
 import AddStakeholder from "./scenes/StakeholderManagement/AddStakeholder";
 import ManageStakeholder from "./scenes/StakeholderManagement/ManageStakeholder";
 import EmployeeWorkTimePage from "./scenes/Payroll/EmployeeWorkingTime";
-import GeneratePerformanceReport from "./scenes/Employeeperformance/GeneratePerformanceReport ";
-import CreateGoal from "./scenes/Employeeperformance/CreateGoal ";
-import CreatePerformanceReview from "./scenes/Employeeperformance/CreatePerformanceReview ";
-import CreateTraining from "./scenes/Employeeperformance/CreateTraining ";
+// import GeneratePerformanceReport from "./scenes/Employeeperformance/GeneratePerformanceReport ";
+// import CreateGoal from "./scenes/Employeeperformance/CreateGoal ";
+// import CreatePerformanceReview from "./scenes/Employeeperformance/CreatePerformanceReview ";
+// import CreateTraining from "./scenes/Employeeperformance/CreateTraining ";
 import ViewFeedback from "./scenes/tables/ViewFeedback";
 import CreateAnnouncements from "./scenes/Announcements/CreateAnnoucements";
 import ManageAnnouncements from "./scenes/Announcements/ManageAnnouncements";
@@ -225,12 +225,12 @@ function App() {
               <Route path="/taskmanagement/mytasks" element={<ProtectedRoute Component={MyTasks } />} />
               <Route path="/taskmanagement/taskcalendar" element={<ProtectedRoute Component={TaskCalendar } />} />
 
-              {/* Performance Managmenet Routes */}
+              {/* Performance Managmenet Routes
 
               <Route path="/employeeperformance/generateperformancereport" element={<ProtectedRoute Component={GeneratePerformanceReport } />} />
               <Route path="/employeeperformance/creategoal" element={<ProtectedRoute Component={CreateGoal } />} />
               <Route path="/employeeperformance/createperformancereview" element={<ProtectedRoute Component={CreatePerformanceReview } />} />
-              <Route path="/employeeperformance/createtraining" element={<ProtectedRoute Component={CreateTraining } />} />
+              <Route path="/employeeperformance/createtraining" element={<ProtectedRoute Component={CreateTraining } />} /> */}
 
 
               {/* Feedback Routes */}
