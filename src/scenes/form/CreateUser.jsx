@@ -98,6 +98,25 @@ const CreateUser = () => {
                 helperText={touched.designation && errors.designation}
                 sx={{ gridColumn: "span 6" }}
               />
+              <FormControl fullWidth variant="filled" sx={{ gridColumn: "span 6" }} error={!!touched.status && !!errors.status}>
+                <InputLabel>Status</InputLabel>
+                <Select
+                  label="Status"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.status}
+                  name="status"
+                >
+                  <MenuItem value="Admin">Admin</MenuItem>
+                  <MenuItem value="HRManager">HRManager</MenuItem>
+                  <MenuItem value="Employee">Employee</MenuItem>
+                  <MenuItem value="FinanceManager">FinanceManager</MenuItem>
+                  <MenuItem value="SalesManager">SalesManager</MenuItem>
+                  <MenuItem value="ProjectManager">ProjectManager</MenuItem>
+                  <MenuItem value="TeamLead">TeamLead</MenuItem>
+                </Select>
+                {touched.status && errors.status && <FormHelperText>{errors.status}</FormHelperText>}
+              </FormControl>
               <TextField
                 fullWidth
                 variant="filled"
@@ -215,25 +234,6 @@ const CreateUser = () => {
                 helperText={touched.city && errors.city}
                 sx={{ gridColumn: "span 6" }}
               />
-              <FormControl fullWidth variant="filled" sx={{ gridColumn: "span 6" }} error={!!touched.status && !!errors.status}>
-                <InputLabel>Status</InputLabel>
-                <Select
-                  label="Status"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.status}
-                  name="status"
-                >
-                  <MenuItem value="Admin">Admin</MenuItem>
-                  <MenuItem value="HRManager">HRManager</MenuItem>
-                  <MenuItem value="Employee">Employee</MenuItem>
-                  <MenuItem value="FinanceManager">FinanceManager</MenuItem>
-                  <MenuItem value="SalesManager">SalesManager</MenuItem>
-                  <MenuItem value="ProjectManager">ProjectManager</MenuItem>
-                  <MenuItem value="TeamLead">TeamLead</MenuItem>
-                </Select>
-                {touched.status && errors.status && <FormHelperText>{errors.status}</FormHelperText>}
-              </FormControl>
          
 
             </Box>

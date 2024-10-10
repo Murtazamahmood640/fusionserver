@@ -164,36 +164,7 @@ const AssignTasks = () => {
                   {touched.projectName && errors.projectName}
                 </FormHelperText>
               </FormControl>
-
-              {/* Task Name */}
-              <TextField
-                fullWidth
-                variant="filled"
-                label="Task Name"
-                name="taskName"
-                value={values.taskName}
-                onBlur={handleBlur}
-                onChange={handleChange}
-                error={!!touched.taskName && !!errors.taskName}
-                helperText={touched.taskName && errors.taskName}
-                sx={{ gridColumn: "span 6" }}
-              />
-
-              {/* Task Description */}
-              <TextField
-                fullWidth
-                variant="filled"
-                label="Task Description"
-                name="textDescription"
-                multiline
-                rows={4}
-                value={values.textDescription}
-                onBlur={handleBlur}
-                onChange={handleChange}
-                error={!!touched.textDescription && !!errors.textDescription}
-                helperText={touched.textDescription && errors.textDescription}
-                sx={{ gridColumn: "span 12" }}
-              />
+              
 
               {/* Assigned To */}
               <FormControl
@@ -277,6 +248,20 @@ const AssignTasks = () => {
                 </FormHelperText>
               </FormControl>
 
+              {/* Task Name */}
+              <TextField
+                fullWidth
+                variant="filled"
+                label="Task Name"
+                name="taskName"
+                value={values.taskName}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                error={!!touched.taskName && !!errors.taskName}
+                helperText={touched.taskName && errors.taskName}
+                sx={{ gridColumn: "span 6" }}
+              />
+
               {/* Start Date */}
               <TextField
                 fullWidth
@@ -306,9 +291,28 @@ const AssignTasks = () => {
                 onChange={handleChange}
                 error={!!touched.endDate && !!errors.endDate}
                 helperText={touched.endDate && errors.endDate}
-                sx={{ gridColumn: "span 6" }}
+                sx={{ gridColumn: "span 6", mb: 3 } }
               />
             </Box>
+
+            {/* Task Description */}
+            <TextField
+                fullWidth
+                variant="filled"
+                label="Task Description"
+                name="textDescription"
+                multiline
+                rows={4}
+                value={values.textDescription}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                error={!!touched.textDescription && !!errors.textDescription}
+                helperText={touched.textDescription && errors.textDescription}
+                sx={{ gridColumn: "span 12" }}
+              />
+
+
+
             <Button
               type="submit"
               variant="contained"

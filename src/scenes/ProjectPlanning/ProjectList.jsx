@@ -24,18 +24,22 @@ import {
   Person as PersonIcon,
   DateRange as DateRangeIcon,
   AttachMoney as AttachMoneyIcon,
-  Description as DescriptionIcon,
-  GroupWork as GroupWorkIcon,
   Business as BusinessIcon,
 } from '@mui/icons-material';
 import axios from 'axios';
 import Header from '../../components/Header';
+import { useTheme } from '@mui/material/styles'; // Import useTheme
+import { tokens } from "../../theme";
+
 const ProjectList = () => {
   const [projects, setProjects] = useState([]);
   const [filteredProjects, setFilteredProjects] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedProject, setSelectedProject] = useState(null);
   const [openUpdateDialog, setOpenUpdateDialog] = useState(false);
+
+  const theme = useTheme(); // Access the theme
+  const colors = tokens(theme.palette.mode);
 
   // Fetch all projects on component mount
   useEffect(() => {
@@ -137,8 +141,7 @@ const ProjectList = () => {
 
   return (
     <Box m={4} sx={{ pb: "40px" }}>
-           <Header title="Project List" subtitle="Manage All created projects" />
-
+      <Header title="Project List" subtitle="Manage All created projects" />
 
       {/* Search Bar */}
       <Box mb={3}>
@@ -162,13 +165,21 @@ const ProjectList = () => {
       <Grid container spacing={3} >
         {filteredProjects.map((project, index) => (
           <Grid item xs={12} sm={6} md={4} key={project._id}>
-            <Card elevation={3} sx={{
-    backgroundColor: (theme) => theme.palette.primary.main, // Use primary.main instead of primary[400]
-  }}>
+            <Card elevation={3}  sx={{
+                backgroundColor:
+                  theme.palette.mode === "dark"
+                    ? theme.palette.primary.main // Keep the current color for dark mode
+                    : colors.grey[900], // Light greyish color for light mode
+                color: colors.grey[100],
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                borderRadius: "8px",
+                transition: "transform 0.3s",
+                "&:hover": { transform: "scale(1.03)" },
+              }}>
               <CardContent>
                 {/* Project Number and Name */}
                 <Box display="flex" alignItems="center" mb={2}>
-                  <Typography variant="h4" color="white" style={{ flexGrow: 1 }}>
+                  <Typography variant="h4"  style={{ flexGrow: 1 }}>
                     {index + 1}. {project.projectName}
                   </Typography>
                 </Box>
@@ -208,13 +219,6 @@ const ProjectList = () => {
                     <strong>Budget:</strong> ${project.budget}
                   </Typography>
                 </Box>
-
-                {/* <Box display="flex" alignItems="center" mb={1}>
-                  <DescriptionIcon color="action" />
-                  <Typography variant="body1" ml={1}>
-                    <strong>Description:</strong> {project.description}
-                  </Typography>
-                </Box> */}
 
                 <Box display="flex" alignItems="center" mb={2}>
                   <BusinessIcon color="action" />
@@ -377,20 +381,6 @@ const ProjectList = () => {
                   variant="outlined"
                 />
               </Grid>
-
-              {/* Description */}
-              {/* <Grid item xs={12}>
-                <TextField
-                  label="Description"
-                  name="description"
-                  value={selectedProject.description}
-                  onChange={handleInputChange}
-                  fullWidth
-                  multiline
-                  rows={4}
-                  variant="outlined"
-                />
-              </Grid> */}
 
               {/* Milestones */}
               <Grid item xs={12}>

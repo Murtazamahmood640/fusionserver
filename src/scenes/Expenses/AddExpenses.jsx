@@ -149,36 +149,25 @@ const AddExpenses = () => {
                                 <MenuItem value="Marketing">Marketing</MenuItem>
                                 <MenuItem value="Other">Other</MenuItem>
                             </TextField>
-
                             <TextField
                                 fullWidth
                                 variant="filled"
-                                type="date"
-                                label="Date"
+                                select
+                                label="Status"
                                 onBlur={handleBlur}
                                 onChange={handleChange}
-                                value={values.date}
-                                name="date"
-                                InputLabelProps={{ shrink: true }}
-                                error={!!touched.date && !!errors.date}
-                                helperText={touched.date && errors.date}
+                                value={values.status}
+                                name="status"
+                                error={!!touched.status && !!errors.status}
+                                helperText={touched.status && errors.status}
                                 sx={{ gridColumn: "span 6" }}
-                            />
+                            >
+                                <MenuItem value="Pending">Pending</MenuItem>
+                                <MenuItem value="Approved">Approved</MenuItem>
+                                <MenuItem value="Rejected">Rejected</MenuItem>
+                            </TextField>
 
-                            <TextField
-                                fullWidth
-                                variant="filled"
-                                type="text"
-                                label="Description"
-                                onBlur={handleBlur}
-                                onChange={handleChange}
-                                value={values.description}
-                                name="description"
-                                error={!!touched.description && !!errors.description}
-                                helperText={touched.description && errors.description}
-                                sx={{ gridColumn: "span 6" }}
-                            />
-
+                            
                             <TextField
                                 fullWidth
                                 variant="filled"
@@ -224,20 +213,33 @@ const AddExpenses = () => {
                             <TextField
                                 fullWidth
                                 variant="filled"
-                                select
-                                label="Status"
+                                type="date"
+                                label="Date"
                                 onBlur={handleBlur}
                                 onChange={handleChange}
-                                value={values.status}
-                                name="status"
-                                error={!!touched.status && !!errors.status}
-                                helperText={touched.status && errors.status}
+                                value={values.date}
+                                name="date"
+                                InputLabelProps={{ shrink: true }}
+                                error={!!touched.date && !!errors.date}
+                                helperText={touched.date && errors.date}
                                 sx={{ gridColumn: "span 6" }}
-                            >
-                                <MenuItem value="Pending">Pending</MenuItem>
-                                <MenuItem value="Approved">Approved</MenuItem>
-                                <MenuItem value="Rejected">Rejected</MenuItem>
-                            </TextField>
+                            />
+
+                            <TextField
+                                fullWidth
+                                variant="filled"
+                                type="text"
+                                label="Description"
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                                value={values.description}
+                                name="description"
+                                error={!!touched.description && !!errors.description}
+                                helperText={touched.description && errors.description}
+                                sx={{ gridColumn: "span 6" }}
+                            />
+
+                            
                         </Box>
 
                         <Box display="flex" justifyContent="flex-end" mt="20px">

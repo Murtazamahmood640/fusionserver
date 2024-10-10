@@ -4,7 +4,7 @@ import { Box, Button, TextField } from "@mui/material";
 import { Formik } from "formik";
 import * as yup from "yup";
 import Header from "../../components/Header";
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Doc = () => {
@@ -14,21 +14,22 @@ const Doc = () => {
     try {
       setSubmitting(true);
   
+      // Prepare form data for Cloudinary upload
       let formData = new FormData();
       formData.append('file', values.file); // The file to upload
       formData.append('upload_preset', 'fusionfiles'); // Use your preset name here
       formData.append('folder', 'documents'); // Specify the folder if needed
-      formData.append('context', `documentName=${values.documentName}|sentBy=${values.sentby}|dated=${values.dated}|reason=${values.reason}`); // Contextual information
   
       const cloudName = 'dawlennc5'; // Replace this with your actual cloud name
-
+  
+      // Upload file to Cloudinary
       const res = await axios.post(`https://api.cloudinary.com/v1_1/${cloudName}/upload`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
   
-      // Prepare data to send to your backend
+      // Prepare document data to send to the backend
       const documentData = {
         filename: res.data.original_filename, // Cloudinary will return the file name
         path: res.data.secure_url, // URL of the uploaded file
@@ -36,23 +37,27 @@ const Doc = () => {
         dated: values.dated,
         reason: values.reason,
       };
-
-      // Send the document data to your backend API
-      await axios.post('https://hrserver1-8yj51ajr.b4a.run/api/documents', documentData); // Adjust your endpoint as necessary
-
+  
+      // Send the document data to your backend API, including the API key in the headers
+      await axios.post('https://hrserver1-8yj51ajr.b4a.run/api/documents', documentData, {
+        headers: {
+          'api_key': process.env.REACT_APP_API_KEY, // Add API key to headers
+        },
+      });
+  
       toast.success("File Uploaded Successfully!");
   
       resetForm();
       setFileName('');
     } catch (error) {
-      const errorMessage = error.response 
-        ? error.response.data 
+      const errorMessage = error.response
+        ? error.response.data
         : error.message || "An unknown error occurred.";
       toast.error(`Failed to upload file: ${errorMessage}`);
     } finally {
       setSubmitting(false);
     }
-  }
+  };
 
   return (
     <Box m="20px">
@@ -121,6 +126,10 @@ const Doc = () => {
                 name="dated"
                 error={touched.dated && !!errors.dated}
                 helperText={touched.dated && errors.dated}
+                InputLabelProps={{ shrink: true }}
+                // InputProps={{
+                //   endAdornment: <Box ml={2} sx={{ color: "gray" }}>MM/DD/YYYY</Box>,
+                // }}
                 sx={{ gridColumn: "span 6" }}
               />
               <input
@@ -156,10 +165,13 @@ const Doc = () => {
           </form>
         )}
       </Formik>
+      {/* Toast Container */}
+      <ToastContainer />
     </Box>
   );
 };
 
+// Form validation schema using Yup
 const checkoutSchema = yup.object().shape({
   documentName: yup.string().required("Document name is required"),
   sentby: yup.string().required("Sender's name is required"),
@@ -174,6 +186,7 @@ const checkoutSchema = yup.object().shape({
     }),
 });
 
+// Initial form values
 const initialValues = {
   documentName: "",
   sentby: "",
